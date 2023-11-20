@@ -1,0 +1,84 @@
+.text-sm {
+  font-size: 14px;
+  line-height: 13.1818px;
+}
+
+.text-sm::before {
+  content: '';
+  margin-bottom: -0.1071em;
+  display: table;
+}
+
+.text-sm::after {
+  content: '';
+  margin-top: -0.1071em;
+  display: table;
+}
+
+.text-md {
+  font-size: 16px;
+  line-height: 15.6364px;
+}
+
+.text-md::before {
+  content: '';
+  margin-bottom: -0.125em;
+  display: table;
+}
+
+.text-md::after {
+  content: '';
+  margin-top: -0.125em;
+  display: table;
+}
+
+.text-lg {
+  font-size: 22px;
+  line-height: 22px;
+}
+
+.text-lg::before {
+  content: '';
+  margin-bottom: -0.1364em;
+  display: table;
+}
+
+.text-lg::after {
+  content: '';
+  margin-top: -0.1364em;
+  display: table;
+}
+
+.text-xl {
+  font-size: 32px;
+  line-height: 31.2727px;
+}
+
+.text-xl::before {
+  content: '';
+  margin-bottom: -0.125em;
+  display: table;
+}
+
+.text-xl::after {
+  content: '';
+  margin-top: -0.125em;
+  display: table;
+}
+
+.text-xxl {
+  font-size: 48px;
+  line-height: 46.9091px;
+}
+
+.text-xxl::before {
+  content: '';
+  margin-bottom: -0.125em;
+  display: table;
+}
+
+.text-xxl::after {
+  content: '';
+  margin-top: -0.125em;
+  display: table;
+}

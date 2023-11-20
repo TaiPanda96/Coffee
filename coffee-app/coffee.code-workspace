@@ -1,0 +1,73 @@
+{
+    "folders": [
+      {
+        "path": "src/lib",
+        "name": "Lib"
+      },
+      {
+        "path": "src/app",
+        "name": "Application"
+      },
+      {
+        "path": "src/components",
+        "name": "Component"
+      },
+    ],
+    "settings": {
+      "files.exclude": {
+        "node_modules/": true,
+        "apps": true
+      },
+      "cSpell.words": [
+        "bignumber",
+        "capchase",
+        "Capchase",
+        "chargeoff",
+        "chargeoffs",
+        "chrono",
+        "datetime",
+        "Dinero",
+        "helicone",
+        "hubspot",
+        "highfi",
+        "idempotency",
+        "itest",
+        "langchain",
+        "llms",
+        "NEXTAUTH",
+        "oauth",
+        "oauths",
+        "opanai",
+        "OPENAI",
+        "openapi",
+        "optimus",
+        "Obligors",
+        "originations",
+        "outro",
+        "Pageview",
+        "payee",
+        "payer",
+        "pdfs",
+        "pulumi",
+        "Pulumi",
+        "slackify",
+        "Stringifier",
+        "superjson",
+        "trpc",
+        "txns",
+        "typecheck",
+        "unreplied",
+        "upsert",
+        "Upserted",
+        "utest",
+        "vectorstores",
+        "wayflyer",
+        "webworkers",
+        "workerpool",
+        "Zod's"
+      ],
+      "editor.formatOnSave": true,
+      "typescript.preferences.importModuleSpecifier": "non-relative",
+      "typescript.tsdk": "Prime/node_modules/typescript/lib"
+    }
+  }

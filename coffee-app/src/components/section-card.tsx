@@ -3,6 +3,7 @@ import { Stack } from './stack'
 import { Inline } from './inline'
 
 interface SectionCardProps {
+  className?: string
   children?: React.ReactNode
   title?: string
   titleLeft?: boolean
@@ -11,9 +12,15 @@ interface SectionCardProps {
   description?: string
 }
 
-export function SectionCard({ children, title, titleLeft, titleRight }: SectionCardProps) {
+export function SectionCard({
+  children,
+  title,
+  titleLeft,
+  titleRight,
+  className,
+}: SectionCardProps) {
   return (
-    <Stack className={classNames('bg-white rounded px-4 py-6 shadow-md brown-shadow')} gap={5}>
+    <Stack className={classNames('rounded px-4 py-6 shadow-md brown-shadow', className)} gap={5}>
       {(title || titleRight) && (
         <Inline>
           {title && (

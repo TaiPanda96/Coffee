@@ -15,7 +15,7 @@ export interface TextProps {
   indent?: number
 }
 
-export function CustomText({
+export function TextInput({
   as = 'span',
   bold = false,
   color = 'regular',

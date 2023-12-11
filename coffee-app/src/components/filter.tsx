@@ -27,13 +27,17 @@ export function FilterComponent({ title, className, filterOptions }: FilterProps
   }, [isModalVisible])
 
   return (
-    <div
-      className={classNames('flex', 'items-center', 'justify-center', 'p-8', {
-        className,
-      })}
-    >
+    <div className={classNames('flex', 'items-center', 'justify-center', 'p-8')}>
       <Stack gap={6}>
-        <Button title={title || 'Filter'} onClick={handleFilterModal}>
+        <Button
+          title={title || 'Filter'}
+          className="border-brand-900
+                text-brand-900
+                hover:text-white
+                hover:bg-brand-900
+                transition-colors"
+          onClick={handleFilterModal}
+        >
           <svg
             className="w-4 h-4 ml-2 align-baseline"
             aria-hidden="true"
@@ -54,7 +58,7 @@ export function FilterComponent({ title, className, filterOptions }: FilterProps
 
         {isModalVisible && (
           <div id="dropdown" className="z-10 fixed mt-12 justify-center">
-            <SectionCard className="bg-brand-1100 mt-6">
+            <SectionCard className="bg-brand-1100 mt-3">
               <Stack gap={4}>
                 <ol
                   className={classNames(

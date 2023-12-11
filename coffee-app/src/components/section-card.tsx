@@ -20,7 +20,10 @@ export function SectionCard({
   className,
 }: SectionCardProps) {
   return (
-    <Stack className={classNames('rounded px-4 py-6 shadow-md brown-shadow', className)} gap={5}>
+    <Stack
+      className={classNames('rounded', 'px-4', 'py-6', 'shadow-md brown-shadow', className)}
+      gap={5}
+    >
       {(title || titleRight) && (
         <Inline>
           {title && (

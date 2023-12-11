@@ -24,10 +24,14 @@ const config: Config = {
           900: '#091918',
           1000: '#800015',
           1100: '#FAFAFA',
+          1200: '#bda27e',
+          1300: '#d2b48c',
+          1400: '#3A3226',
         },
       },
       fontFamily: {
         sans: [
+          'trap',
           'Inter',
           'ui-sans-serif',
           'system-ui',

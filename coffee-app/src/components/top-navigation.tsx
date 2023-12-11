@@ -15,7 +15,6 @@ export interface Breadcrumb {
 export interface TopNavigationProps {
   className?: string
   breadcrumbs?: Array<{ loading: true } | Breadcrumb>
-  heading: string
   headingBottom?: ReactNode
   headingRight?: ReactNode
   headingSize?: '3xl'
@@ -30,17 +29,12 @@ export interface TopNavigationProps {
   }
 }
 
-export function TopNavigationComponent({ className, heading, breadcrumbs }: TopNavigationProps) {
+export function TopNavigationComponent({ className, breadcrumbs }: TopNavigationProps) {
   return (
     <div>
-      <Stack gap={4} className={classNames('bg-brand-700 py-8 px-4 sm:px-8', className)}>
-        {heading && (
-          <Inline justify="between" align="bottom">
-            <TextInput className="text-3xl font-semibold" color="light" as="h1" value={heading} />
-          </Inline>
-        )}
+      <Stack gap={4} className={classNames('bg-brand-1400 py-8 px-4 sm:px-8', className)}>
         {breadcrumbs && (
-          <Inline justify="right" align="bottom">
+          <Inline justify="right" align="center">
             {breadcrumbs.map((breadcrumb, index) => {
               if ('loading' in breadcrumb) {
                 return (

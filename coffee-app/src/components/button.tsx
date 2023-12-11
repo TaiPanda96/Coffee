@@ -29,7 +29,7 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
       type="button"
       onClick={onClick}
     >
-      {title || 'Filter'}
+      {title || ''}
       {children}
     </button>
   )

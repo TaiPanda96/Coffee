@@ -1,5 +1,4 @@
 'use client'
-
 import classNames from 'classnames'
 import { ReactNode, useCallback, useState } from 'react'
 import { Stack } from './stack'
@@ -19,7 +18,7 @@ interface FilterProps {
   }>
 }
 
-export function FilterComponent({ title, className, filterOptions }: FilterProps) {
+export function FilterComponent({ title, filterOptions }: FilterProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {
@@ -46,12 +45,7 @@ export function FilterComponent({ title, className, filterOptions }: FilterProps
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            ></path>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
           </svg>
         </Button>
         <br></br>

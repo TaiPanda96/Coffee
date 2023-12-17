@@ -10,12 +10,12 @@ interface ItemProps {
   className?: string
   title: string
   description: string
-  price: string
+  price?: string
   count?: string
   children?: React.ReactNode
 }
 
-export function Item({ className, title, description, price, count, children }: ItemProps) {
+export function Item({ className, title, description, children }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <SectionCard
@@ -27,8 +27,7 @@ export function Item({ className, title, description, price, count, children }: 
               <TextInput value={title} color="regular" as="h1" bold />
             </Inline>
             {children}
-            <TextInput value={price} color="regular" as="h3" bold />
-            <TextInput value={description} color="inverted-light" as="h3" />
+            <TextInput value={description} color="light" as="h3" />
             <Button
               className={classNames(
                 'flex',
@@ -38,10 +37,10 @@ export function Item({ className, title, description, price, count, children }: 
                 'rounded-full',
                 'border',
                 'border-brand-900',
-                'bg-inherit',
-                'text-brand-900',
+                'bg-black',
+                'text-brand-1100',
                 'hover:text-white',
-                'hover:bg-brand-900',
+                'hover:bg-brand-1400',
                 'transition-colors',
                 'px-2.5',
                 'py-2.5',
@@ -50,7 +49,7 @@ export function Item({ className, title, description, price, count, children }: 
               )}
             >
               <Inline justify="center" align="center">
-                <TextInput value="Add to Cart" color="regular" as="span" size="sm" />
+                <TextInput value="Read Me" color="regular" as="span" size="sm" />
               </Inline>
             </Button>
           </Stack>

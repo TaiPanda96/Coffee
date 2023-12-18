@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
 interface ListOptionProps {
+  key?: string
   id: string
   label: string
 }
 
-export function ListOption({ id, label }: ListOptionProps) {
+export function ListOption({ key, id, label }: ListOptionProps) {
   const [isCheck, setIsCheck] = useState(false)
   return (
     <li className="flex items-center">

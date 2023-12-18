@@ -28,7 +28,7 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
       type="button"
       onClick={onClick}
     >
-      <Inline gap={4} justify="between">
+      <Inline gap={8}>
         {title || ''}
         {children}
       </Inline>

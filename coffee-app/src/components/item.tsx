@@ -22,24 +22,22 @@ export function Item({ className, title, children }: ItemProps) {
         className={classNames('rounded', 'px-4', 'py-6', 'shadow-md brown-shadow', className)}
       >
         <Stack gap={8}>
-          <Stack gap={4}>
-            <Inline justify="center">
-              <TextInput value={title} color="regular" as="h1" bold />
+          <Inline justify="center">
+            <TextInput value={title} color="regular" as="h1" bold />
+          </Inline>
+          {children}
+          <Button
+            className={classNames(
+              'text-white',
+              'bg-brand-1400',
+              'hover:text-brand-1100',
+              'hover:bg-brand-800',
+            )}
+          >
+            <Inline justify="center" align="center">
+              <TextInput value="Read Me" color="regular" as="span" size="sm" />
             </Inline>
-            {children}
-            <Button
-              className={classNames(
-                'text-white',
-                'bg-brand-1400',
-                'hover:text-brand-1100',
-                'hover:bg-brand-800',
-              )}
-            >
-              <Inline justify="center" align="center">
-                <TextInput value="Read Me" color="regular" as="span" size="sm" />
-              </Inline>
-            </Button>
-          </Stack>
+          </Button>
         </Stack>
       </SectionCard>
     </div>

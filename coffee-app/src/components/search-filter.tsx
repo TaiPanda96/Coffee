@@ -2,7 +2,14 @@ import classNames from 'classnames'
 import { Inline } from './inline'
 import { FilterComponent } from './filter'
 
-export function SearchFilter({}) {
+interface SearchFilterProps {
+  options: Array<{
+    title: string
+    options: string[]
+  }>
+}
+
+export function SearchFilter({ options }: SearchFilterProps) {
   return (
     <div
       className={classNames(
@@ -16,44 +23,22 @@ export function SearchFilter({}) {
         'font-semibold',
       )}
     >
-      <Inline gap={2} justify="center">
-        <FilterComponent
-          title="Natural"
-          gap={4}
-          grow={true}
-          filterOptions={[
-            { id: '1', label: 'Ethopia' },
-            { id: '2', label: 'Columbia' },
-            { id: '3', label: 'Kenya' },
-            { id: '4', label: 'Brazil' },
-            { id: '5', label: 'Costa Rica' },
-          ]}
-        />
-        <div className="border-l-2 border-gray-400 h-12"></div>
-        <FilterComponent
-          title="Brew Method"
-          gap={4}
-          grow={true}
-          filterOptions={[
-            { id: '1', label: 'Filtered' },
-            { id: '2', label: 'Espresso' },
-            { id: '3', label: 'Cold Brew' },
-            { id: '4', label: 'Aeropress' },
-            { id: '5', label: 'French Press' },
-          ]}
-        />
-        <div className="border-l-2 border-gray-400 h-12"></div>
-        <FilterComponent
-          title="Roast"
-          gap={4}
-          grow={true}
-          filterOptions={[
-            { id: '1', label: 'Light' },
-            { id: '2', label: 'Medium' },
-            { id: '3', label: 'Dark' },
-          ]}
-        />
-      </Inline>
+      {options.map((filter, idx) => (
+        <Inline gap={2} justify="center">
+          <FilterComponent
+            title={filter.title}
+            gap={4}
+            grow={true}
+            filterOptions={filter.options.map((option) => ({
+              id: option,
+              label: option,
+            }))}
+          />
+          {idx === options.length - 1 ? null : (
+            <div className="border-l-2 border-gray-400 h-12"></div>
+          )}
+        </Inline>
+      ))}
     </div>
   )
 }

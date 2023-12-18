@@ -32,7 +32,7 @@ export interface TopNavigationProps {
 export function TopNavigationComponent({ className, breadcrumbs }: TopNavigationProps) {
   return (
     <div>
-      <Stack gap={4} className={classNames('bg-brand-1400 py-8 px-4 sm:px-8', className)}>
+      <Stack gap={4} className={classNames('bg-brand-800 py-8 px-4 sm:px-8', className)}>
         {breadcrumbs && (
           <Inline justify="right" align="center">
             {breadcrumbs.map((breadcrumb, index) => {

@@ -9,43 +9,30 @@ import { Button } from './button'
 interface ItemProps {
   className?: string
   title: string
-  description: string
+  description?: string
   price?: string
   count?: string
   children?: React.ReactNode
 }
 
-export function Item({ className, title, description, children }: ItemProps) {
+export function Item({ className, title, children }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <SectionCard
         className={classNames('rounded', 'px-4', 'py-6', 'shadow-md brown-shadow', className)}
       >
         <Stack gap={8}>
-          <Stack gap={8}>
+          <Stack gap={4}>
             <Inline justify="center">
               <TextInput value={title} color="regular" as="h1" bold />
             </Inline>
             {children}
-            <TextInput value={description} color="light" as="h3" />
             <Button
               className={classNames(
-                'flex',
-                'bottom-2',
-                'right-2',
-                'flex',
-                'rounded-full',
-                'border',
-                'border-brand-900',
-                'bg-black',
-                'text-brand-1100',
-                'hover:text-white',
-                'hover:bg-brand-1400',
-                'transition-colors',
-                'px-2.5',
-                'py-2.5',
-                'text-sm',
-                'font-semibold',
+                'text-white',
+                'bg-brand-1400',
+                'hover:text-brand-1100',
+                'hover:bg-brand-800',
               )}
             >
               <Inline justify="center" align="center">

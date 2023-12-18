@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
+import { Inline } from './inline'
 
 interface ButtonProps {
   title?: string
@@ -14,14 +15,12 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
       className={classNames(
         'flex',
         'rounded-full',
-        'border',
-        'border-brand-600',
-        'text-brand-300',
-        'hover:text-white',
-        'hover:bg-brand-300',
+        'justify-center',
+        'border-gray',
         'transition-colors',
-        'px-6',
-        'py-4',
+        'px-16',
+        'py-3',
+        'mt-3',
         'text-sm',
         'font-semibold',
         className,
@@ -29,8 +28,10 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
       type="button"
       onClick={onClick}
     >
-      {title || ''}
-      {children}
+      <Inline gap={4} justify="between">
+        {title || ''}
+        {children}
+      </Inline>
     </button>
   )
 }

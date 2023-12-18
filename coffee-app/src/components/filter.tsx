@@ -5,6 +5,8 @@ import { Stack } from './stack'
 import { Button } from './button'
 import { ListOption } from './list'
 import { SectionCard } from './section-card'
+import { IoFilterSharp } from 'react-icons/io5'
+import { Inline } from './inline'
 
 interface FilterProps {
   title?: string
@@ -26,37 +28,33 @@ export function FilterComponent({ title, filterOptions }: FilterProps) {
   }, [isModalVisible])
 
   return (
-    <div className={classNames('flex', 'items-center', 'justify-center', 'p-8')}>
-      <Stack gap={6}>
-        <Button
-          title={title || 'Filter'}
-          className="border-brand-900
-                text-brand-900
-                hover:text-white
-                hover:bg-brand-900
-                transition-colors"
-          onClick={handleFilterModal}
-        >
-          <svg
-            className="w-4 h-4 ml-2 align-baseline"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </Button>
+    <div
+      className={classNames(
+        'flex',
+        'rounded-full',
+        'border-brand-900',
+        'bg-gray-200',
+        ' text-brand-900',
+        ' hover:text-brand-1400',
+        ' hover:bg-gray-300',
+        'transition-colors',
+      )}
+    >
+      <Stack gap={6} align="center">
+        <Inline gap={4}>
+          <Button title={title || 'Filter'} onClick={handleFilterModal}>
+            <IoFilterSharp strokeLinecap="round" strokeLinejoin="round" />
+          </Button>
+        </Inline>
         <br></br>
 
         {isModalVisible && (
-          <div id="dropdown" className="z-10 fixed mt-12 justify-center">
-            <SectionCard className="bg-brand-1100 mt-3">
+          <div id="dropdown" className="z-8 fixed mt-8 justify-center">
+            <SectionCard className="bg-brand-1100 mt-11 justify-center">
               <Stack gap={4}>
                 <ol
                   className={classNames(
-                    'space-y-2',
+                    'space-y-3',
                     'text-sm',
                     'aria-labelledby="dropdownDefault"',
                   )}

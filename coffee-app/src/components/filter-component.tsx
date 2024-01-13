@@ -1,15 +1,15 @@
 import classNames from 'classnames'
 import { Inline } from './inline'
-import { FilterComponent } from './filter'
+import { FilterOptions } from './filter-options'
 
-interface SearchFilterProps {
+interface FilterProps {
   options: Array<{
     title: string
     options: string[]
   }>
 }
 
-export function SearchFilter({ options }: SearchFilterProps) {
+export function FilterComponent({ options }: FilterProps) {
   return (
     <div
       className={classNames(
@@ -25,7 +25,7 @@ export function SearchFilter({ options }: SearchFilterProps) {
     >
       {options.map((filter, idx) => (
         <Inline gap={2} justify="center">
-          <FilterComponent
+          <FilterOptions
             title={filter.title}
             gap={4}
             grow={true}

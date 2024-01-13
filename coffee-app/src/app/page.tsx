@@ -6,7 +6,7 @@ import { TextInput } from '@/components/text-input'
 import { Item } from '@/components/item'
 import Image from 'next/image'
 import { HorizontalLine } from '@/components/horizontal-line'
-import { SearchFilter } from '@/components/search-filter'
+import { FilterComponent } from '@/components/filter-component'
 
 export default function HomePage() {
   const tabs: Breadcrumb[] = [
@@ -15,7 +15,7 @@ export default function HomePage() {
     { label: 'Our Story', href: '/about-us' },
   ]
 
-  const searchFilterConfig = [
+  const filterConfig = [
     { title: 'Natural', options: ['Ethopia', 'Columbia', 'Kenya', 'Brazil', 'Costa Rica'] },
     {
       title: 'Brew Method',
@@ -39,7 +39,7 @@ export default function HomePage() {
               />
             </Inline>
             <div className="flex flex-col items-center justify-center">
-              <SearchFilter options={searchFilterConfig} />
+              <FilterComponent options={filterConfig} />
             </div>
             <Inline className="justify-center">
               <TextInput value={'Featured Coffees'} color="brand" as="h2" />
@@ -49,11 +49,11 @@ export default function HomePage() {
       </Stack>
       <br></br>
 
-      <Stack gap={3}>
+      {/* <Stack gap={3}>
         <Inline gap={3} justify="center">
           <Image src="/gentlemen.svg" width={200} height={500} alt={''} />
         </Inline>
-      </Stack>
+      </Stack> */}
       <Stack gap={6}>
         <SectionCard className="bg-brand-1100 justify-stretch @container">
           <div className="grid grid-flow-row gap-8 @2xl:grid-cols-3 justify-center">

@@ -19,7 +19,7 @@ interface FilterProps {
   }>
 }
 
-export function FilterComponent({ title, filterOptions, children }: FilterProps) {
+export function FilterOptions({ title, filterOptions, children }: FilterProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {
@@ -46,7 +46,7 @@ export function FilterComponent({ title, filterOptions, children }: FilterProps)
         <br></br>
 
         {isModalVisible && (
-          <div id="dropdown" className="z-8 fixed mt-8 justify-center">
+          <div id="dropdown" className="z-11 fixed mt-8 justify-center">
             {children ? (
               children
             ) : (

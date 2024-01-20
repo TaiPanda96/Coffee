@@ -21,7 +21,6 @@ export default function HomePage() {
       title: 'Brew Method',
       options: ['Filtered', 'Espresso', 'Cold Brew', 'Aeropress', 'French Press'],
     },
-    { title: 'Roast', options: ['Light', 'Medium', 'Dark'] },
   ]
 
   return (
@@ -49,13 +48,8 @@ export default function HomePage() {
       </Stack>
       <br></br>
 
-      {/* <Stack gap={3}>
-        <Inline gap={3} justify="center">
-          <Image src="/gentlemen.svg" width={200} height={500} alt={''} />
-        </Inline>
-      </Stack> */}
       <Stack gap={6}>
-        <SectionCard className="bg-brand-1100 justify-stretch @container">
+        <SectionCard className="bg-brand-1100 @container">
           <div className="grid grid-flow-row gap-8 @2xl:grid-cols-3 justify-center">
             <HorizontalLine thickness={25} color="#3A3226" />
             <Inline gap={8} justify="between">

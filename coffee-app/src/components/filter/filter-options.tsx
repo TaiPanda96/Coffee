@@ -1,25 +1,24 @@
-'use client'
 import classNames from 'classnames'
-import { ReactNode, useCallback, useState } from 'react'
-import { Stack } from './stack'
-import { Button } from './button'
-import { ListOption } from './list'
-import { SectionCard } from './section-card'
+import { useState, useCallback, ReactNode } from 'react'
 import { IoFilterSharp } from 'react-icons/io5'
+import { Button } from '../button'
+import { ListOption } from './list-options'
+import { SectionCard } from '../section-card'
+import { Stack } from '../stack'
 
-interface FilterProps {
+export interface FilterOptionProps {
   title?: string
   children?: ReactNode
   className?: string
   gap?: number
   grow?: boolean
   filterOptions: Array<{
-    id: string
     label: string
+    description?: string
   }>
 }
 
-export function FilterOptions({ title, filterOptions, children }: FilterProps) {
+export function FilterOptions({ title, filterOptions, children }: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {
@@ -60,7 +59,7 @@ export function FilterOptions({ title, filterOptions, children }: FilterProps) {
                     )}
                   >
                     {filterOptions.map((input) => (
-                      <ListOption key={input.id} id={input.id} label={input.label} />
+                      <ListOption label={input.label} />
                     ))}
                   </ol>
                 </Stack>

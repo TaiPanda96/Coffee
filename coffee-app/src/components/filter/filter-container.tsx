@@ -6,9 +6,12 @@ import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
 
 interface FilterContainerProps {
-  options: Array<{
+  filterOptions: Array<{
     title: string
     options: string[]
+    sliderOptions?: {
+      [key: string]: string[]
+    }
     typeOfFilter: string
   }>
 }
@@ -19,7 +22,7 @@ export const availableFilters = {
   slider: SliderOptions,
 }
 
-export function FilterContainer({ options }: FilterContainerProps) {
+export function FilterContainer({ filterOptions }: FilterContainerProps) {
   return (
     <div
       className={classNames(
@@ -33,7 +36,7 @@ export function FilterContainer({ options }: FilterContainerProps) {
         'font-semibold',
       )}
     >
-      {options.map((filter, idx) => (
+      {filterOptions.map((filter, idx) => (
         <Inline gap={2} justify="center">
           {filter.typeOfFilter === 'radio' && (
             <RadioOptions
@@ -53,14 +56,16 @@ export function FilterContainer({ options }: FilterContainerProps) {
           )}
           {filter.typeOfFilter === 'scale' && (
             <SliderOptions
-              title={filter.title}
+              min={1}
               gap={4}
               grow={true}
-              filterOptions={filter.options.map((option) => ({ label: option }))}
+              title={filter.title}
+              filterOptions={[]}
+              sliderOptions={filter.sliderOptions}
             />
           )}
 
-          {idx === options.length - 1 ? null : (
+          {idx === filterOptions.length - 1 ? null : (
             <div className="border-l-2 border-gray-400 h-12"></div>
           )}
         </Inline>

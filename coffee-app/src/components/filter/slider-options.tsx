@@ -8,37 +8,48 @@ import { SectionCard } from '../section-card'
 import { Inline } from '../inline'
 import { TextInput } from '../text-input'
 
-export interface SliderOptionsProps {
+export interface SliderOptionsProps extends FilterOptionProps {
   min: number
-  max: number
+  max?: number
   step?: number
+  sliderOptions?: {
+    [key: string]: string[]
+  }
   filterOptions: Array<{
     label: string
     description?: string
   }>
 }
 
-export const Slider = ({ filterOptions }: SliderOptionsProps) => {
+export const Slider = ({ sliderOptions }: SliderOptionsProps) => {
   return (
-    <div className="flex flex-col space-y-6 p-6 w-80">
-      <TextInput value="On the first sip" color="regular" as="span" size="sm" nowrap />
-      <input type="range" min="1" max="6" step="1" />
-      <ul className="flex justify-between w-full ">
-        {filterOptions.map((input) => (
-          <Stack gap={2}>
-            <li>
-              <Inline justify="between" align="center" gap={6}>
-                <TextInput value={input.label} color="regular" as="span" size="sm" nowrap />
-              </Inline>
-            </li>
-          </Stack>
-        ))}
-      </ul>
-    </div>
+    <>
+      {Object.entries(sliderOptions || {}).map(([key, sliderRanges]) => {
+        if (!Array.isArray(sliderRanges) || !sliderRanges.length) return null
+        return (
+          <div className="flex flex-col space-y-6 p-6 w-80">
+            <TextInput value={key} color="inverted" as="span" size="sm" nowrap />
+            <input type="range" min="1" max="6" step="1" color="bg-brand-900" />
+            <ul className="flex justify-between w-full ">
+              {Array.isArray(sliderRanges) &&
+                sliderRanges.map((input) => (
+                  <Stack gap={2}>
+                    <li>
+                      <Inline justify="between" align="center" gap={6}>
+                        <TextInput value={input} color="inverted" as="span" size="sm" nowrap bold />
+                      </Inline>
+                    </li>
+                  </Stack>
+                ))}
+            </ul>
+          </div>
+        )
+      })}
+    </>
   )
 }
 
-export function SliderOptions({ title, filterOptions }: FilterOptionProps) {
+export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOptionsProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {
@@ -64,10 +75,19 @@ export function SliderOptions({ title, filterOptions }: FilterOptionProps) {
         </Button>
         <br></br>
         {isModalVisible && (
-          <div className="z-11 fixed mt-8 justify-center">
-            <SectionCard className="bg-brand-1100 mt-11 justify-center flex">
+          <div className="z-10 mr-2 fixed mt-8 justify-center">
+            <SectionCard className="bg-brand-1400 mt-11 justify-center flex">
               <Stack gap={2}>
-                <Slider min={1} max={filterOptions.length} step={1} filterOptions={filterOptions} />
+                {filterOptions.length ? (
+                  <Slider
+                    min={1}
+                    max={filterOptions.length}
+                    step={1}
+                    filterOptions={filterOptions}
+                  />
+                ) : (
+                  <Slider min={1} step={1} sliderOptions={sliderOptions} filterOptions={[]} />
+                )}
               </Stack>
             </SectionCard>
           </div>

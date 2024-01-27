@@ -33,13 +33,14 @@ export function RadioOptions({ title, filterOptions }: FilterOptionProps) {
         </Button>
         <br></br>
         {isModalVisible && (
-          <div className="z-11 fixed mt-8 justify-center">
-            <SectionCard className="bg-brand-1100 mt-11 justify-center">
-              <Stack gap={4}>
+          <div className="z-10 mr-2 fixed mt-8 justify-center">
+            <SectionCard className="bg-brand-1400 mt-11 fixed justify-center flex">
+              <Stack gap={2}>
                 <ol
                   className={classNames(
-                    'space-y-2',
+                    'space-y-1',
                     'text-sm',
+                    'align-middle',
                     'aria-labelledby="dropdownDefault"',
                   )}
                 >

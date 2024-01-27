@@ -11,11 +11,11 @@ import { FilterContainer } from '@/components/filter/filter-container'
 const filterCategories = [
   {
     title: 'Experience',
-    options: ['Light', 'Medium', 'Medium Full', 'Full Body'],
+    options: [],
     sliderOptions: {
-      Light: ['Light', 'Medium', 'Medium Full', 'Full Body'],
+      Strength: ['Light', 'Medium', 'Medium Full', 'Full Body'],
       Acidity: ['Slightly', 'Tart', 'Zesty', 'Sharp'],
-      Funk: ['A Hint of Funk', 'Mild Funk', 'Tropical Funk'],
+      Funk: ['No Funk', 'Mild Funk', 'Tropical Funk'],
     },
     typeOfFilter: 'scale',
   },
@@ -48,7 +48,7 @@ export default function HomePage() {
               />
             </Inline>
             <div className="flex flex-col items-center justify-center">
-              <FilterContainer options={filterCategories} />
+              <FilterContainer filterOptions={filterCategories} />
             </div>
           </Stack>
         </SectionCard>

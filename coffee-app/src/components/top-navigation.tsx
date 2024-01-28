@@ -53,7 +53,7 @@ export function TopNavigationComponent({ className, breadcrumbs }: TopNavigation
                     <TextInput
                       value={breadcrumb.label}
                       color="inverted-light"
-                      className="text-sm hover:text-white transition-colors justify-right mr-1 ml-1"
+                      className="text-sm hover:text-white transition-colors justify-right mr-2 ml-2"
                       as="span"
                     />
                   </Link>

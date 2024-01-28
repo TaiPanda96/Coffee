@@ -4,7 +4,7 @@ import { Inline } from './inline'
 import { SectionCard } from './section-card'
 import { Stack } from './stack'
 import { TextInput } from './text-input'
-import { Button } from './button'
+import Link from 'next/link'
 
 interface ItemProps {
   className?: string
@@ -13,9 +13,10 @@ interface ItemProps {
   price?: string
   count?: string
   children?: React.ReactNode
+  slug: string
 }
 
-export function Item({ className, title, children }: ItemProps) {
+export function Item({ className, title, children, slug }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <SectionCard
@@ -26,18 +27,29 @@ export function Item({ className, title, children }: ItemProps) {
             <TextInput value={title} color="regular" as="h1" bold />
           </Inline>
           {children}
-          <Button
+          <Link
+            href={`/product/${slug}`}
             className={classNames(
+              'flex',
+              'rounded-full',
               'text-white',
+              'justify-center',
+              'border-gray',
+              'transition-colors',
+              'px-16',
+              'py-3',
+              'mt-3',
+              'text-sm',
+              'font-semibold',
+              'hover:bg-gray-100',
+              'hover:text-brand-700',
               'bg-brand-1400',
-              'hover:text-brand-1100',
-              'hover:bg-brand-800',
             )}
           >
             <Inline justify="center" align="center">
-              <TextInput value="Read Me" color="regular" as="span" size="sm" />
+              <TextInput value={'Tell Me More'} color="regular" as="span" bold nowrap />
             </Inline>
-          </Button>
+          </Link>
         </Stack>
       </SectionCard>
     </div>

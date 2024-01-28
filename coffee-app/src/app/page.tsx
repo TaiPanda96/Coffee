@@ -7,32 +7,16 @@ import { Item } from '@/components/item'
 import Image from 'next/image'
 import { HorizontalLine } from '@/components/horizontal-line'
 import { FilterContainer } from '@/components/filter/filter-container'
+import { coffeeList } from '../lib/constants/coffee-list'
+import { filterCategories } from '../lib/constants/filter-categories'
 
-const filterCategories = [
-  {
-    title: 'Experience',
-    options: [],
-    sliderOptions: {
-      Strength: ['Light', 'Medium', 'Medium Full', 'Full Body'],
-      Acidity: ['Slightly', 'Tart', 'Zesty', 'Sharp'],
-      Funk: ['No Funk', 'Mild Funk', 'Tropical Funk'],
-    },
-    typeOfFilter: 'scale',
-  },
-  {
-    title: 'Brew Method',
-    options: ['Filtered', 'Espresso', 'Great For Both'],
-    typeOfFilter: 'radio',
-  },
+export const tabs: Breadcrumb[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Features', href: '/product' },
+  { label: 'Our Story', href: '/about' },
 ]
 
 export default function HomePage() {
-  const tabs: Breadcrumb[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Features', href: '/promotions' },
-    { label: 'Our Story', href: '/about-us' },
-  ]
-
   return (
     <>
       <TopNavigationComponent breadcrumbs={tabs} />
@@ -59,150 +43,25 @@ export default function HomePage() {
         <div className="grid grid-flow-row gap-8 @2xl:grid-cols-3 justify-center">
           <HorizontalLine thickness={25} color="#3A3226" />
           <Inline gap={8} justify="between">
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/rooster-coffee.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
+            {coffeeList.map((coffee) => {
+              return (
+                <Item
+                  className="bg-brand-1300"
+                  title={coffee.title}
+                  description={coffee.description}
+                  slug={coffee.slug}
+                  children={
+                    <Image
+                      src={coffee.image}
+                      width={200}
+                      height={200}
+                      className="rounded-full"
+                      alt={''}
+                    />
+                  }
                 />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/catfish.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/rooster-coffee.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/catfish.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/specialty-coffee.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-          </Inline>
-
-          <HorizontalLine thickness={15} color="#3A3226" />
-          <Inline gap={8} justify="between">
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/spirit-animal.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/catfish.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/rooster-coffee.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/detour.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
-            <Item
-              className="bg-brand-1300"
-              title="Ethiopia Yirgacheffe"
-              description="Fruity, Floral, Bright"
-              children={
-                <Image
-                  src="/specialty-coffee.jpeg"
-                  width={200}
-                  height={200}
-                  className="rounded-full"
-                  alt={''}
-                />
-              }
-            />
+              )
+            })}
           </Inline>
         </div>
       </div>

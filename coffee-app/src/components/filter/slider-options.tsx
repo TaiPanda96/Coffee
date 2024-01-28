@@ -12,6 +12,7 @@ export interface SliderOptionsProps extends FilterOptionProps {
   min: number
   max?: number
   step?: number
+  className?: string
   sliderOptions?: {
     [key: string]: string[]
   }
@@ -21,7 +22,7 @@ export interface SliderOptionsProps extends FilterOptionProps {
   }>
 }
 
-export const Slider = ({ sliderOptions }: SliderOptionsProps) => {
+export const Slider = ({ className, sliderOptions }: SliderOptionsProps) => {
   return (
     <>
       {Object.entries(sliderOptions || {}).map(([key, sliderRanges]) => {
@@ -29,7 +30,14 @@ export const Slider = ({ sliderOptions }: SliderOptionsProps) => {
         return (
           <div className="flex flex-col space-y-6 p-6 w-80">
             <TextInput value={key} color="inverted" as="span" size="sm" nowrap />
-            <input type="range" min="1" max="6" step="1" color="bg-brand-900" />
+            <input
+              type="range"
+              min="1"
+              max="6"
+              step="1"
+              color="bg-brand-900"
+              className={className}
+            />
             <ul className="flex justify-between w-full ">
               {Array.isArray(sliderRanges) &&
                 sliderRanges.map((input) => (

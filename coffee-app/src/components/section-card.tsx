@@ -31,6 +31,7 @@ export function SectionCard({
               className={classNames(
                 `text-2xl font-semibold`,
                 titleLeft ? `text-left` : `text-center`,
+                className,
               )}
             >
               {title}

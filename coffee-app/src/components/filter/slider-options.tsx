@@ -1,61 +1,10 @@
-import { SetStateAction, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Stack } from '../stack'
-import { FilterOptionProps } from './filter-options'
 import classNames from 'classnames'
 import { Button } from '../button'
 import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
-import { Inline } from '../inline'
-import { TextInput } from '../text-input'
-
-export interface SliderOptionsProps extends FilterOptionProps {
-  min: number
-  max?: number
-  step?: number
-  className?: string
-  sliderOptions?: {
-    [key: string]: string[]
-  }
-  filterOptions: Array<{
-    label: string
-    description?: string
-  }>
-}
-
-export const Slider = ({ className, sliderOptions }: SliderOptionsProps) => {
-  return (
-    <>
-      {Object.entries(sliderOptions || {}).map(([key, sliderRanges]) => {
-        if (!Array.isArray(sliderRanges) || !sliderRanges.length) return null
-        return (
-          <div className="flex flex-col space-y-6 p-6 w-80">
-            <TextInput value={key} color="inverted" as="span" size="sm" nowrap />
-            <input
-              type="range"
-              min="1"
-              max="6"
-              step="1"
-              color="bg-brand-900"
-              className={className}
-            />
-            <ul className="flex justify-between w-full ">
-              {Array.isArray(sliderRanges) &&
-                sliderRanges.map((input) => (
-                  <Stack gap={2}>
-                    <li>
-                      <Inline justify="between" align="center" gap={6}>
-                        <TextInput value={input} color="inverted" as="span" size="sm" nowrap bold />
-                      </Inline>
-                    </li>
-                  </Stack>
-                ))}
-            </ul>
-          </div>
-        )
-      })}
-    </>
-  )
-}
+import { Slider, SliderOptionsProps } from './slider'
 
 export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOptionsProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -84,7 +33,7 @@ export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOpt
         <br></br>
         {isModalVisible && (
           <div className="z-10 mr-2 fixed mt-8 justify-center">
-            <SectionCard className="bg-brand-1400 mt-11 justify-center flex">
+            <SectionCard className="bg-brand-1100 mt-11 justify-center flex rounded-sm">
               <Stack gap={2}>
                 {filterOptions.length ? (
                   <Slider
@@ -94,7 +43,13 @@ export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOpt
                     filterOptions={filterOptions}
                   />
                 ) : (
-                  <Slider min={1} step={1} sliderOptions={sliderOptions} filterOptions={[]} />
+                  <Slider
+                    color="regular"
+                    min={1}
+                    step={1}
+                    sliderOptions={sliderOptions}
+                    filterOptions={[]}
+                  />
                 )}
               </Stack>
             </SectionCard>
@@ -104,3 +59,4 @@ export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOpt
     </div>
   )
 }
+export { Slider }

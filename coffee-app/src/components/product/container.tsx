@@ -4,8 +4,11 @@ import { SectionCard } from '../section-card'
 import { Stack } from '../stack'
 import { Inline } from '../inline'
 import { TextInput } from '../text-input'
-import { Slider } from '../filter/slider-options'
 import { Button } from '../button'
+import { Badge } from '../badge'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { useCallback, useState } from 'react'
 
 export interface ProductContainerProps {
   children?: React.ReactNode
@@ -13,15 +16,17 @@ export interface ProductContainerProps {
   slug: string
 }
 
-const tabs = [
-  { label: 'Home', href: '/' },
-  { label: 'Features', href: '/product' },
-  { label: 'Our Story', href: '/about' },
-]
-
 export function ProductContainer({ slug, children }: ProductContainerProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const handleExpand = useCallback(() => {
+    setIsExpanded(!isExpanded)
+
+    // TODO: Add logic to switch between up and down chevron
+  }, [isExpanded])
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="grid grid-flow-row gap-8 @2xl:grid-cols-2 justify-center">
         <Stack gap={4}>
           <Inline gap={8} justify="between">
@@ -37,8 +42,14 @@ export function ProductContainer({ slug, children }: ProductContainerProps) {
               )}
             >
               <Stack gap={8} align="left">
-                <Inline gap={6} justify="center">
+                <Inline gap={8} justify="between">
                   <TextInput value={slug} color="inverted" as="span" size="lg" />
+                </Inline>
+
+                <Inline gap={8} justify="between">
+                  <Badge size="md" rounded label="seasonal" />
+                  <Badge size="md" rounded label="in stock" />
+                  <Badge size="md" rounded label="authors pick" />
                 </Inline>
 
                 <TextInput
@@ -54,30 +65,44 @@ export function ProductContainer({ slug, children }: ProductContainerProps) {
                   size="sm"
                 />
 
-                <Stack gap={8} align="left">
-                  <TextInput value={'Details'} color="inverted" as="span" size="md" bold />
-                  <Inline gap={8} justify="between">
-                    <Button
-                      className={classNames('bg-brand-1100', 'text-black')}
-                      title="Farm/Origin"
-                    />
-                    <Button className={classNames('bg-brand-1100', 'text-black')} title="Process" />
-                  </Inline>
-                </Stack>
+                <Inline justify="between" grow className="gap-2">
+                  <TextInput value={'Learn More'} color="inverted" as="span" size="md" bold />
+                  <FontAwesomeIcon
+                    onClick={handleExpand}
+                    icon={isExpanded ? faChevronUp : faChevronDown}
+                    color="white"
+                    fontStyle={`font-size: 1.5rem; font-style: white`}
+                  />
+                </Inline>
 
-                <Stack gap={4} align="left">
-                  <TextInput value={'Profile'} color="inverted" as="span" size="md" bold />
+                {isExpanded && (
+                  <Stack gap={8} align="left">
+                    <Inline gap={8} justify="between">
+                      <TextInput value={`Origin`} color="inverted" as="span" size="sm" />
+                      <Badge size="sm" rounded label="Brazil" />
+                    </Inline>
+                    <Inline gap={8} justify="between">
+                      <TextInput value={`Process`} color="inverted" as="span" size="sm" />
+                      <Badge size="sm" rounded label="Washed" />
+                    </Inline>
+                    <Inline gap={8} justify="between">
+                      <TextInput value={`Bag Sizes`} color="inverted" as="span" size="sm" />
+                      <Badge size="sm" rounded label="250g" />
+                      <Badge size="sm" rounded label="1kg" />
+                    </Inline>
+                  </Stack>
+                )}
 
-                  <Slider
-                    className="pointer-events-none"
-                    title="Coffee Profile"
-                    sliderOptions={{
-                      Acidity: ['Low', 'High'],
-                      Body: ['Low', 'High'],
-                      Flavor: ['Low', 'High'],
-                    }}
-                    min={0}
-                    filterOptions={[]}
+                <Stack gap={8} align="center">
+                  <Button
+                    className={classNames(
+                      'hover:bg-gray-400',
+                      'bg-brand-1100',
+                      'text-black',
+                      'px-8',
+                      'justify-items-center',
+                    )}
+                    title="Purchase Now"
                   />
                 </Stack>
               </Stack>

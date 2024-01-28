@@ -20,7 +20,7 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
         'transition-colors',
         'px-16',
         'py-3',
-        'mt-3',
+        'mt-2',
         'text-sm',
         'font-semibold',
         className,

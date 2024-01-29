@@ -34,7 +34,7 @@ export function RadioOptions({ title, filterOptions }: FilterOptionProps) {
         <br></br>
         {isModalVisible && (
           <div className="z-10 mr-2 fixed mt-8 justify-center">
-            <SectionCard className="bg-brand-1400 mt-11 fixed justify-center flex">
+            <SectionCard className="bg-brand-1100 mt-11 fixed justify-center flex">
               <Stack gap={2}>
                 <ol
                   className={classNames(

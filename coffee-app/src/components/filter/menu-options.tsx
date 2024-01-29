@@ -19,11 +19,11 @@ export function MenuOptions({ label, description }: MenuOptionProps) {
                   name="helper-radio"
                   type="radio"
                   value=""
-                  className={classNames('w-4 h-4', 'text-primary-600', 'focus:ring-primary-900')}
+                  className={classNames('w-4 h-4', 'bg-brand-1100')}
                 />
               </div>
               <div className="ms-2 text-sm">
-                <label htmlFor="helper-radio-4" className="font-medium text-white">
+                <label htmlFor="helper-radio-4" className="font-medium text-black">
                   {label}
                   <p
                     id="helper-radio-text-4"

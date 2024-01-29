@@ -14,6 +14,7 @@ export function decodeSlug(slug: string) {
 }
 
 export default function ProductProfile({ params }: { params: { slug: string } }) {
+  const [itemIdx, setScrollIdx] = React.useState(0)
   const [product, setProduct] = React.useState(
     coffeeList.find((product) => params.slug.includes(product.slug)),
   )
@@ -21,6 +22,8 @@ export default function ProductProfile({ params }: { params: { slug: string } })
   const handleScaleChange = (index: number) => {
     const newProduct = coffeeList[index]
     setProduct(newProduct)
+
+    setScrollIdx(index)
   }
 
   return (
@@ -45,7 +48,12 @@ export default function ProductProfile({ params }: { params: { slug: string } })
         <Inline gap={2} justify="center">
           {coffeeList.map((item, idx) => (
             <div className="scroll-item" key={idx}>
-              <FontAwesomeIcon icon={faCoffee} size="2xl" onClick={() => handleScaleChange(idx)} />
+              <FontAwesomeIcon
+                className="cursor-pointer transition-transform duration-200 hover:scale-150"
+                icon={faCoffee}
+                size="2xl"
+                onClick={() => handleScaleChange(idx)}
+              />
             </div>
           ))}
         </Inline>

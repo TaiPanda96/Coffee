@@ -19,7 +19,7 @@ export default function ProductProfile({ params }: { params: { slug: string } })
     coffeeList.find((product) => params.slug.includes(product.slug)),
   )
 
-  const handleScaleChange = (index: number) => {
+  const handleScrolling = (index: number) => {
     const newProduct = coffeeList[index]
     setProduct(newProduct)
 
@@ -52,7 +52,7 @@ export default function ProductProfile({ params }: { params: { slug: string } })
                 className="cursor-pointer transition-transform duration-200 hover:scale-150"
                 icon={faCoffee}
                 size="2xl"
-                onClick={() => handleScaleChange(idx)}
+                onClick={() => handleScrolling(idx)}
               />
             </div>
           ))}

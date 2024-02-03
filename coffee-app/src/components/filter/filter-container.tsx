@@ -4,6 +4,7 @@ import { Inline } from '../inline'
 import { FilterOptions } from './filter-options'
 import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
+import { Coffee, ExperienceStrength, BrewMethod } from '@/lib/constants/coffee-list'
 
 interface FilterContainerProps {
   filterOptions: Array<{
@@ -14,6 +15,7 @@ interface FilterContainerProps {
     }
     typeOfFilter: string
   }>
+  data: Coffee[]
 }
 
 export const availableFilters = {
@@ -22,7 +24,47 @@ export const availableFilters = {
   slider: SliderOptions,
 }
 
-export function FilterContainer({ filterOptions }: FilterContainerProps) {
+export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
+  const handleFilter = (
+    data: Coffee[],
+    {
+      experience,
+      brewingMethod,
+    }: {
+      experience: ExperienceStrength
+      brewingMethod: BrewMethod
+    },
+  ) => {
+    const experienceFilter = (
+      data: Coffee[],
+      {
+        strengthOption,
+      }: {
+        strengthOption: ExperienceStrength
+      },
+    ) => {
+      return data.filter((coffee) => {
+        return Object.values(coffee.experience || {})?.includes(strengthOption)
+      })
+    }
+
+    const brewingMethodFilter = (
+      coffeeList: Coffee[],
+      { brewMethod }: { brewMethod: BrewMethod },
+    ) => {
+      return coffeeList.filter((coffee) => {
+        return coffee.brewMethod === brewMethod
+      })
+    }
+
+    return Array.from(
+      new Set([
+        ...experienceFilter(data ?? [], { strengthOption: experience }),
+        ...brewingMethodFilter(data ?? [], { brewMethod: brewingMethod }),
+      ]),
+    )
+  }
+
   return (
     <div
       className={classNames(
@@ -37,7 +79,7 @@ export function FilterContainer({ filterOptions }: FilterContainerProps) {
       )}
     >
       {filterOptions.map((filter, idx) => (
-        <Inline gap={2} justify="center">
+        <Inline key={idx} gap={2} justify="center">
           {filter.typeOfFilter === 'radio' && (
             <RadioOptions
               title={filter.title}

@@ -6,9 +6,6 @@ import { Inline } from '../inline'
 import { TextInput } from '../text-input'
 import { Button } from '../button'
 import { Badge } from '../badge'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { useCallback, useState } from 'react'
 
 export interface ProductContainerProps {
   children?: React.ReactNode
@@ -17,28 +14,20 @@ export interface ProductContainerProps {
 }
 
 export function ProductContainer({ slug, children }: ProductContainerProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const handleExpand = useCallback(() => {
-    setIsExpanded(!isExpanded)
-
-    // TODO: Add logic to switch between up and down chevron
-  }, [isExpanded])
-
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="grid grid-flow-row gap-8 @2xl:grid-cols-2 justify-center">
         <Stack gap={4}>
           <Inline gap={8} justify="between">
             {children}
             <SectionCard
               className={classNames(
-                'w-3/4 max-w-lg', // Adjusts width to 3/4 of its container and sets a maximum width
+                'w-full sm:w-3/4 md:w-2/3 lg:max-w-lg', // Responsive width and max-width
                 'flex flex-col items-center justify-center',
                 'bg-brand-1400',
-                'p-4', // Adjusts padding inside the card
-                'mx-auto', // Centers the card horizontally with auto margins
-                'mt-11 mr-11', // Adjusts margin; you might want to change these values
+                'p-2 sm:p-4 md:p-6', // Responsive padding
+                'mx-auto',
+                'my-4 sm:mt-11 sm:mr-11', // Responsive margin
               )}
             >
               <Stack gap={8} align="left">
@@ -66,32 +55,24 @@ export function ProductContainer({ slug, children }: ProductContainerProps) {
                 />
 
                 <Inline justify="between" grow className="gap-2">
-                  <TextInput value={'Learn More'} color="inverted" as="span" size="md" bold />
-                  <FontAwesomeIcon
-                    onClick={handleExpand}
-                    icon={isExpanded ? faChevronUp : faChevronDown}
-                    color="white"
-                    fontStyle={`font-size: 1.5rem; font-style: white`}
-                  />
+                  <TextInput value={'Details'} color="inverted" as="span" size="md" bold />
                 </Inline>
 
-                {isExpanded && (
-                  <Stack gap={8} align="left">
-                    <Inline gap={8} justify="between">
-                      <TextInput value={`Origin`} color="inverted" as="span" size="sm" />
-                      <Badge size="sm" rounded label="Brazil" />
-                    </Inline>
-                    <Inline gap={8} justify="between">
-                      <TextInput value={`Process`} color="inverted" as="span" size="sm" />
-                      <Badge size="sm" rounded label="Washed" />
-                    </Inline>
-                    <Inline gap={8} justify="between">
-                      <TextInput value={`Bag Sizes`} color="inverted" as="span" size="sm" />
-                      <Badge size="sm" rounded label="250g" />
-                      <Badge size="sm" rounded label="1kg" />
-                    </Inline>
-                  </Stack>
-                )}
+                <Stack gap={8} align="left">
+                  <Inline gap={8} justify="between">
+                    <TextInput value={`Origin`} color="inverted" as="span" size="sm" />
+                    <Badge size="sm" rounded label="Brazil" />
+                  </Inline>
+                  <Inline gap={8} justify="between">
+                    <TextInput value={`Process`} color="inverted" as="span" size="sm" />
+                    <Badge size="sm" rounded label="Washed" />
+                  </Inline>
+                  <Inline gap={8} justify="between">
+                    <TextInput value={`Bag Sizes`} color="inverted" as="span" size="sm" />
+                    <Badge size="sm" rounded label="250g" />
+                    <Badge size="sm" rounded label="1kg" />
+                  </Inline>
+                </Stack>
 
                 <Stack gap={8} align="center">
                   <Button

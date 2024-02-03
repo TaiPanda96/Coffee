@@ -7,10 +7,18 @@ import { Button } from '../button'
 import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
 
-export function RadioOptions({ title, filterOptions }: FilterOptionProps) {
+export function RadioOptions({
+  title,
+  children,
+  className,
+  gap,
+  grow,
+  filterOptions,
+  onFilter,
+}: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const handleFilterModal = useCallback(() => {
+  const handleRadioOptionsVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible)
   }, [isModalVisible])
 
@@ -28,7 +36,7 @@ export function RadioOptions({ title, filterOptions }: FilterOptionProps) {
       )}
     >
       <Stack gap={2}>
-        <Button title={title || 'Filter'} onClick={handleFilterModal}>
+        <Button title={title || 'Filter'} onClick={handleRadioOptionsVisibility}>
           <IoFilterSharp strokeLinecap="round" strokeLinejoin="round" />
         </Button>
         <br></br>

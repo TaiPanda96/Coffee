@@ -5,6 +5,7 @@ import { Button } from '../button'
 import { ListOption } from './list-options'
 import { SectionCard } from '../section-card'
 import { Stack } from '../stack'
+import { Coffee } from '@/lib/constants/coffee-list'
 
 export interface FilterOptionProps {
   title?: string
@@ -16,9 +17,18 @@ export interface FilterOptionProps {
     label: string
     description?: string
   }>
+  onFilter?: (filter: string) => Coffee[]
 }
 
-export function FilterOptions({ title, filterOptions, children }: FilterOptionProps) {
+export function FilterOptions({
+  title,
+  children,
+  className,
+  gap,
+  grow,
+  filterOptions,
+  onFilter,
+}: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {

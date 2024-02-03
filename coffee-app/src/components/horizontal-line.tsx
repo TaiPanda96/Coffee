@@ -10,7 +10,7 @@ interface HorizontalLineProps {
 export function HorizontalLine({ thickness = 2, className, color }: HorizontalLineProps) {
   return (
     <div
-      className={classNames(className, 'border-b', `${color}`)}
+      className={classNames('border-b', `${color}`)}
       style={{ borderBottomWidth: `${thickness}px`, borderBottomColor: `${color}` }}
     />
   )

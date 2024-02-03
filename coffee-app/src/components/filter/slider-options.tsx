@@ -6,10 +6,15 @@ import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
 import { Slider, SliderOptionsProps } from './slider'
 
-export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOptionsProps) {
+export function SliderOptions({
+  title,
+  sliderOptions,
+  filterOptions,
+  onFilter,
+}: SliderOptionsProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const handleFilterModal = useCallback(() => {
+  const handleSliderOptionsVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible)
   }, [isModalVisible])
 
@@ -27,7 +32,7 @@ export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOpt
       )}
     >
       <Stack gap={2}>
-        <Button title={title || 'Filter'} onClick={handleFilterModal}>
+        <Button title={title || 'Filter'} onClick={handleSliderOptionsVisibility}>
           <IoFilterSharp strokeLinecap="round" strokeLinejoin="round" />
         </Button>
         <br></br>

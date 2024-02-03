@@ -8,7 +8,8 @@ import Image from 'next/image'
 import { HorizontalLine } from '@/components/horizontal-line'
 import { FilterContainer } from '@/components/filter/filter-container'
 import { coffeeList } from '../lib/constants/coffee-list'
-import { filterCategories } from '../lib/constants/filter-categories'
+import React from 'react'
+import { filterCategories } from '@/lib/constants/filter-categories'
 
 export const tabs: Breadcrumb[] = [
   { label: 'Home', href: '/' },
@@ -16,9 +17,23 @@ export const tabs: Breadcrumb[] = [
   { label: 'Our Story', href: '/about' },
 ]
 
+export const numberOfShelves = 2
+
 export default function HomePage() {
+  const groupItemsPerShelf = (items: any[], numberOfShelves: number) => {
+    return items.reduce((coffeeShelfArray, item, idx) => {
+      const shelfIdx = Math.floor(idx / numberOfShelves)
+      if (!coffeeShelfArray[shelfIdx]) {
+        coffeeShelfArray[shelfIdx] = []
+      }
+      coffeeShelfArray[shelfIdx].push(item)
+      return coffeeShelfArray
+    }, [])
+  }
+
+  const shelves = groupItemsPerShelf(coffeeList, numberOfShelves)
   return (
-    <>
+    <div>
       <TopNavigationComponent breadcrumbs={tabs} />
       <Stack gap={6}>
         <SectionCard className="bg-brand-1100">
@@ -32,39 +47,41 @@ export default function HomePage() {
               />
             </Inline>
             <div className="flex flex-col items-center justify-center">
-              <FilterContainer filterOptions={filterCategories} />
+              <FilterContainer filterOptions={filterCategories} data={coffeeList} />
             </div>
           </Stack>
         </SectionCard>
       </Stack>
       <br></br>
-
-      <div className=" bg-brand-1100 flex flex-col justify-center items-center">
-        <div className="grid grid-flow-row gap-8 @2xl:grid-cols-3 justify-center">
-          <HorizontalLine thickness={25} color="#3A3226" />
-          <Inline gap={8} justify="between">
-            {coffeeList.map((coffee) => {
-              return (
-                <Item
-                  className="bg-brand-1300"
-                  title={coffee.title}
-                  description={coffee.description}
-                  slug={coffee.slug}
-                  children={
-                    <Image
-                      src={coffee.image}
-                      width={200}
-                      height={200}
-                      className="rounded-full"
-                      alt={''}
-                    />
-                  }
-                />
-              )
-            })}
-          </Inline>
-        </div>
-      </div>
-    </>
+      <Stack gap={2}>
+        <HorizontalLine thickness={20} color="#3A3226" />
+        <Inline gap={2} justify="between">
+          {shelves.map((shelf: any[], shelfIndex: number) => (
+            <React.Fragment key={`shelf-${shelfIndex}`}>
+              <Stack gap={4} className="flex-wrap">
+                {shelf.map((coffee) => (
+                  <Item
+                    key={coffee.slug}
+                    className="bg-brand-1300 flex-wrap"
+                    title={coffee.title}
+                    description={coffee.description}
+                    slug={coffee.slug}
+                    children={
+                      <Image
+                        src={coffee.image}
+                        width={200}
+                        height={200}
+                        className="rounded-full item:hover"
+                        alt={coffee.title}
+                      />
+                    }
+                  />
+                ))}
+              </Stack>
+            </React.Fragment>
+          ))}
+        </Inline>
+      </Stack>
+    </div>
   )
 }

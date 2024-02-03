@@ -16,15 +16,24 @@ interface ItemProps {
   slug: string
 }
 
+import styles from './item.module.css'
+
 export function Item({ className, title, children, slug }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <SectionCard
-        className={classNames('rounded', 'px-4', 'py-6', 'shadow-md brown-shadow', className)}
+        className={classNames(
+          'rounded',
+          'px-4',
+          'py-6',
+          'shadow-md brown-shadow',
+          className,
+          styles.itemHover,
+        )}
       >
-        <Stack gap={8}>
+        <Stack gap={8} align="center">
           <Inline justify="center">
-            <TextInput value={title} color="regular" as="h1" bold />
+            <TextInput value={title} color="inverted" as="h1" bold />
           </Inline>
           {children}
           <Link

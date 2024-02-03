@@ -31,7 +31,7 @@ export interface TopNavigationProps {
 
 export function TopNavigationComponent({ className, breadcrumbs }: TopNavigationProps) {
   return (
-    <div>
+    <>
       <Stack gap={4} className={classNames('bg-brand-800 py-8 px-4 sm:px-8', className)}>
         {breadcrumbs && (
           <Inline justify="right" align="center">
@@ -66,6 +66,6 @@ export function TopNavigationComponent({ className, breadcrumbs }: TopNavigation
           </Inline>
         )}
       </Stack>
-    </div>
+    </>
   )
 }

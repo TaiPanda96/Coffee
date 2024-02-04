@@ -7,15 +7,7 @@ import { Button } from '../button'
 import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
 
-export function RadioOptions({
-  title,
-  children,
-  className,
-  gap,
-  grow,
-  filterOptions,
-  onFilter,
-}: FilterOptionProps) {
+export function RadioOptions({ title, filterOptions, onChange }: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleRadioOptionsVisibility = useCallback(() => {
@@ -52,9 +44,23 @@ export function RadioOptions({
                     'aria-labelledby="dropdownDefault"',
                   )}
                 >
-                  {filterOptions.map((input) => (
-                    <MenuOptions label={input.label} />
-                  ))}
+                  {filterOptions
+                    .concat({
+                      label: 'All',
+                      description: 'All',
+                    })
+                    .map((input) => (
+                      <MenuOptions
+                        label={input.label}
+                        value={input.label}
+                        onChange={(event) => {
+                          if (onChange) {
+                            onChange(event)
+                          }
+                          setIsModalVisible(false)
+                        }}
+                      />
+                    ))}
                 </ol>
               </Stack>
             </SectionCard>

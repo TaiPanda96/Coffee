@@ -1,15 +1,16 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
 import { Inline } from './inline'
+import { TextInput } from './text-input'
 
 interface ButtonProps {
-  title?: string
-  onClick?: () => void
   children?: ReactNode
+  title?: string
   className?: string
+  onClick?: () => void
 }
 
-export function Button({ title, onClick, children, className }: ButtonProps) {
+export function Button({ title, children, className, onClick }: ButtonProps) {
   return (
     <button
       className={classNames(
@@ -29,7 +30,9 @@ export function Button({ title, onClick, children, className }: ButtonProps) {
       onClick={onClick}
     >
       <Inline gap={8}>
-        {title || ''}
+        <Inline align="center">
+          <TextInput value={title} color="regular" as="span" bold nowrap />
+        </Inline>
         {children}
       </Inline>
     </button>

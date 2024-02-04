@@ -4,29 +4,39 @@ import { Stack } from '../stack'
 export interface MenuOptionProps {
   label: string
   description?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string
 }
 
-export function MenuOptions({ label, description }: MenuOptionProps) {
+export function MenuOptions({ label, description, value, onChange }: MenuOptionProps) {
+  const radioOptionId = `radio-${value}`
   return (
     <>
       <Stack gap={4}>
-        <ul aria-labelledby="dropdownHelperRadioButton">
+        <ul>
           <li>
             <div className="flex p-2 rounded">
               <div className="flex items-center h-5">
                 <input
-                  id="helper-radio-4"
+                  id={radioOptionId}
                   name="helper-radio"
                   type="radio"
-                  value=""
-                  className={classNames('w-4 h-4', 'bg-brand-1100')}
+                  value={value}
+                  className={classNames('w-4 h-4', 'text-primary-600', 'focus:ring-primary-900')}
+                  onChange={
+                    onChange
+                      ? (event) => {
+                          onChange(event)
+                        }
+                      : undefined
+                  }
                 />
               </div>
               <div className="ms-2 text-sm">
-                <label htmlFor="helper-radio-4" className="font-medium text-black">
+                <label htmlFor={radioOptionId} className="font-medium text-black">
                   {label}
                   <p
-                    id="helper-radio-text-4"
+                    id={radioOptionId}
                     className="text-xs font-normal text-gray-500 dark:text-gray-300"
                   >
                     {description}

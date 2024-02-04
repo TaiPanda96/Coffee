@@ -5,7 +5,6 @@ import { Button } from '../button'
 import { ListOption } from './list-options'
 import { SectionCard } from '../section-card'
 import { Stack } from '../stack'
-import { Coffee } from '@/lib/constants/coffee-list'
 
 export interface FilterOptionProps {
   title?: string
@@ -17,18 +16,10 @@ export interface FilterOptionProps {
     label: string
     description?: string
   }>
-  onFilter?: (filter: string) => Coffee[]
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function FilterOptions({
-  title,
-  children,
-  className,
-  gap,
-  grow,
-  filterOptions,
-  onFilter,
-}: FilterOptionProps) {
+export function FilterOptions({ title, children, filterOptions, onChange }: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleFilterModal = useCallback(() => {

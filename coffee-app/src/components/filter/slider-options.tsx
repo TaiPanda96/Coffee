@@ -6,12 +6,7 @@ import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
 import { Slider, SliderOptionsProps } from './slider'
 
-export function SliderOptions({
-  title,
-  sliderOptions,
-  filterOptions,
-  onFilter,
-}: SliderOptionsProps) {
+export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOptionsProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleSliderOptionsVisibility = useCallback(() => {

@@ -13,6 +13,7 @@ export function decodeSlug(slug: string) {
 }
 
 export default function ProductProfile({ params }: { params: { slug: string } }) {
+  // Adding a 'tabs' array to the 'ProductProfile' component
   const tabs: Breadcrumb[] = [
     { label: 'Home', href: '/' },
     { label: 'Features', href: '/product' },

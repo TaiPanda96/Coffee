@@ -7,6 +7,7 @@ import { TextInput } from './text-input'
 import Link from 'next/link'
 
 interface ItemProps {
+  key: string
   className?: string
   title: string
   description?: string
@@ -18,7 +19,7 @@ interface ItemProps {
 
 import styles from './item.module.css'
 
-export function Item({ className, title, children, slug }: ItemProps) {
+export function Item({ slug, className, title, children }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <SectionCard

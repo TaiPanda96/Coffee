@@ -20,7 +20,7 @@ export const tabs: Breadcrumb[] = [
 export const numberOfShelves = 2
 
 export default function HomePage() {
-  const groupItemsPerShelf = (items: any[], numberOfShelves: number) => {
+  const groupItemsInShelves = (items: any[], numberOfShelves: number) => {
     return items.reduce((coffeeShelfArray, item, idx) => {
       const shelfIdx = Math.floor(idx / numberOfShelves)
       if (!coffeeShelfArray[shelfIdx]) {
@@ -31,7 +31,7 @@ export default function HomePage() {
     }, [])
   }
 
-  const shelves = groupItemsPerShelf(coffeeList, numberOfShelves)
+  const shelves = groupItemsInShelves(coffeeList, numberOfShelves)
   return (
     <div>
       <TopNavigationComponent breadcrumbs={tabs} />
@@ -42,6 +42,7 @@ export default function HomePage() {
               <TextInput
                 value={'Discover your next great cup of coffee.'}
                 color="brand"
+                bold
                 as="h1"
                 size="lg"
               />
@@ -55,10 +56,10 @@ export default function HomePage() {
       <br></br>
       <Stack gap={2}>
         <HorizontalLine thickness={20} color="#3A3226" />
-        <Inline gap={2} justify="between">
+        <Inline gap={8} justify="between">
           {shelves.map((shelf: any[], shelfIndex: number) => (
             <React.Fragment key={`shelf-${shelfIndex}`}>
-              <Stack gap={4} className="flex-wrap">
+              <Stack gap={8} className="flex-wrap">
                 {shelf.map((coffee) => (
                   <Item
                     key={coffee.slug}

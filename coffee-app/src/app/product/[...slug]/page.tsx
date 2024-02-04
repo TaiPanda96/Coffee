@@ -10,7 +10,7 @@ import React from 'react'
 
 export default function ProductProfile({ params }: { params: { slug: string } }) {
   const tabs: Breadcrumb[] = [
-    { label: 'Home', href: '/' },
+    { label: 'Home', href: '/home' },
     { label: 'Features', href: '/product' },
     { label: 'Our Story', href: '/about' },
   ]

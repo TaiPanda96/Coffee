@@ -3,7 +3,7 @@ import { FilterContainer } from '@/components/filter/container'
 import { coffeeList } from '../lib/constants/coffee-list'
 import { filterCategories } from '@/lib/constants/filter-categories'
 
-function HomePage() {
+export default function HomePage() {
   const tabs: Breadcrumb[] = [
     { label: 'Home', href: '/' },
     { label: 'Features', href: '/product' },
@@ -17,5 +17,3 @@ function HomePage() {
     </div>
   )
 }
-
-export default HomePage

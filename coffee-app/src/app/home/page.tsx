@@ -1,6 +1,6 @@
 import { TopNavigationComponent, Breadcrumb } from '@/components/top-navigation'
 import { FilterContainer } from '@/components/filter/container'
-import { coffeeList } from '../lib/constants/coffee-list'
+import { coffeeList } from '../../lib/constants/coffee-list'
 import { filterCategories } from '@/lib/constants/filter-categories'
 
 export default function HomePage() {

@@ -5,12 +5,8 @@ import { Breadcrumb, TopNavigationComponent } from '@/components/top-navigation'
 import { coffeeList } from '@/lib/constants/coffee-list'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image' // Import the 'Image' component from 'next/image'
+import Image from 'next/image'
 import React from 'react'
-
-export function decodeSlug(slug: string) {
-  return slug.split('-').join(' ')
-}
 
 export default function ProductProfile({ params }: { params: { slug: string } }) {
   const tabs: Breadcrumb[] = [

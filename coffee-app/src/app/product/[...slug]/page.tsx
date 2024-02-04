@@ -1,8 +1,7 @@
 'use client'
-import { tabs } from '@/app/page'
 import { Inline } from '@/components/inline'
 import { ProductContainer } from '@/components/product/container'
-import { TopNavigationComponent } from '@/components/top-navigation'
+import { Breadcrumb, TopNavigationComponent } from '@/components/top-navigation'
 import { coffeeList } from '@/lib/constants/coffee-list'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,6 +13,11 @@ export function decodeSlug(slug: string) {
 }
 
 export default function ProductProfile({ params }: { params: { slug: string } }) {
+  const tabs: Breadcrumb[] = [
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/product' },
+    { label: 'Our Story', href: '/about' },
+  ]
   const [itemIdx, setScrollIdx] = React.useState(0)
   const [product, setProduct] = React.useState(
     coffeeList.find((product) => params.slug.includes(product.slug)),

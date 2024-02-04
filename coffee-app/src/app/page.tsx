@@ -4,13 +4,13 @@ import { coffeeList } from '../lib/constants/coffee-list'
 import React from 'react'
 import { filterCategories } from '@/lib/constants/filter-categories'
 
-export const tabs: Breadcrumb[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Features', href: '/product' },
-  { label: 'Our Story', href: '/about' },
-]
+export function HomePage() {
+  const tabs: Breadcrumb[] = [
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/product' },
+    { label: 'Our Story', href: '/about' },
+  ]
 
-export default function HomePage() {
   return (
     <div>
       <TopNavigationComponent breadcrumbs={tabs} />

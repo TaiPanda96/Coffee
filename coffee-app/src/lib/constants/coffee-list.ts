@@ -1,6 +1,6 @@
-export type ExperienceStrength = 'Light' | 'Medium' | 'Medium Full' | 'Full Body'
-export type ExperienceAcidity = 'Slightly' | 'Zesty' | 'Tart' | 'Sharp'
-export type ExperienceFunk = 'Mild Funk' | 'Tropical Funk' | 'No Funk'
+export type Strength = 'Light' | 'Medium' | 'Medium Full' | 'Full Body'
+export type Acidity = 'Slightly' | 'Zesty' | 'Tart' | 'Sharp'
+export type Funk = 'Mild Funk' | 'Tropical Funk' | 'No Funk'
 
 export type BrewMethod = 'Great For Both' | 'Espresso' | 'Filtered'
 
@@ -9,11 +9,9 @@ export interface Coffee {
   description: string
   image: string
   slug: string
-  experience?: {
-    strength: 'Light' | 'Medium' | 'Medium Full' | 'Full Body'
-    acidity: 'Slightly' | 'Zesty' | 'Tart' | 'Sharp'
-    funk: 'Mild Funk' | 'Tropical Funk' | 'No Funk'
-  }
+  intensity?: Strength
+  acidity?: Acidity
+  funk?: Funk
   brewMethod?: 'Great For Both' | 'Espresso' | 'Filtered'
 }
 
@@ -23,11 +21,9 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/rooster-coffee.jpeg',
     slug: 'rooster',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Light',
+    acidity: 'Slightly',
+    funk: 'No Funk',
     brewMethod: 'Great For Both',
   },
   {
@@ -35,11 +31,9 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/catfish.jpeg',
     slug: 'catfish',
-    experience: {
-      strength: 'Full Body',
-      acidity: 'Slightly',
-      funk: 'Tropical Funk',
-    },
+    intensity: 'Medium Full',
+    funk: 'Mild Funk',
+    acidity: 'Zesty',
     brewMethod: 'Great For Both',
   },
   {
@@ -47,11 +41,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/specialty-coffee.jpeg',
     slug: 'turbo-expresso',
-    experience: {
-      strength: 'Light',
-      acidity: 'Zesty',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium Full',
+    acidity: 'Tart',
     brewMethod: 'Great For Both',
   },
   {
@@ -59,11 +50,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/spirit-animal.jpeg',
     slug: 'spirit-animal',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Great For Both',
   },
   {
@@ -71,11 +59,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/detour.jpeg',
     slug: 'detour',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Great For Both',
   },
   {
@@ -83,11 +68,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/catfish.jpeg',
     slug: 'catfish',
-    experience: {
-      strength: 'Medium Full',
-      acidity: 'Zesty',
-      funk: 'Tropical Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Filtered',
   },
   {
@@ -95,11 +77,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/specialty-coffee.jpeg',
     slug: 'turbo-expresso',
-    experience: {
-      strength: 'Medium Full',
-      acidity: 'Tart',
-      funk: 'Tropical Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Filtered',
   },
   {
@@ -107,11 +86,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/spirit-animal.jpeg',
     slug: 'spirit-animal',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Great For Both',
   },
   {
@@ -119,11 +95,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/detour.jpeg',
     slug: 'detour',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Espresso',
   },
   {
@@ -131,11 +104,8 @@ export const coffeeList: Coffee[] = [
     description: 'Fruity, Floral, Bright',
     image: '/catfish.jpeg',
     slug: 'catfish',
-    experience: {
-      strength: 'Medium',
-      acidity: 'Slightly',
-      funk: 'Mild Funk',
-    },
+    intensity: 'Medium',
+    acidity: 'Slightly',
     brewMethod: 'Espresso',
   },
 ]

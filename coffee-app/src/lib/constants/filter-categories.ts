@@ -1,17 +1,22 @@
 export const filterCategories = [
   {
-    title: 'Experience',
-    options: [],
-    sliderOptions: {
-      Strength: ['Light', 'Medium', 'Medium Full', 'Full Body'],
-      Acidity: ['Slightly', 'Tart', 'Zesty', 'Sharp'],
-      Funk: ['No Funk', 'Mild Funk', 'Tropical Funk'],
-    },
-    typeOfFilter: 'scale',
+    title: 'Brewing Method',
+    options: ['Filtered', 'Espresso', 'Great For Both'],
+    typeOfFilter: 'radio',
   },
   {
-    title: 'Brew Method',
-    options: ['Filtered', 'Espresso', 'Great For Both'],
+    title: 'Acidity',
+    options: ['Slightly', 'Tart', 'Zesty', 'Sharp'],
+    typeOfFilter: 'radio',
+  },
+  {
+    title: 'Intensity',
+    options: ['Light', 'Medium', 'Medium Full', 'Full', 'Extra Full', 'Extra Light'],
+    typeOfFilter: 'radio',
+  },
+  {
+    title: 'Funk',
+    options: ['No Funk', 'Mild Funk', 'Tropical Funk'],
     typeOfFilter: 'radio',
   },
 ]

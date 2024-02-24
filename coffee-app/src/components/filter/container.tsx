@@ -12,7 +12,8 @@ import { Stack } from '../stack'
 import Image from 'next/image'
 import { SectionCard } from '../section-card'
 import { TextInput } from '../text-input'
-import { easeOut, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { camelCase } from 'lodash'
 
 export const availableFilters = {
   radio: RadioOptions,
@@ -46,12 +47,13 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
     }, [])
   }
 
-  const applyFilter = (event: { target: { value: string } }) => {
-    const newBrewMethod = event.target.value as BrewMethod
+  const applyFilter = (event: { target: { value: string } }, filterTitle: string) => {
+    const filterOption = event.target.value
 
     const filteredData = data.filter((coffee) => {
       if (event.target.value === 'All') return true
-      return coffee.brewMethod === newBrewMethod
+      const filterOn = coffee[`${camelCase(filterTitle)}` as keyof Coffee] ?? coffee.brewMethod
+      return filterOn === filterOption
     })
 
     setCoffeeData(filteredData)
@@ -100,20 +102,9 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
                       gap={4}
                       grow={true}
                       filterOptions={filter.options.map((option) => ({ label: option }))}
-                      onChange={applyFilter}
+                      onChange={(event) => applyFilter(event, filter.title)}
                     />
                   )}
-                  {filter.typeOfFilter === 'scale' && (
-                    <SliderOptions
-                      min={1}
-                      gap={4}
-                      grow={true}
-                      title={filter.title}
-                      filterOptions={[]}
-                      sliderOptions={filter.sliderOptions}
-                    />
-                  )}
-
                   {idx === filterOptions.length - 1 ? null : (
                     <div className=" border-gray-400 h-14"></div>
                   )}

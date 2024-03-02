@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import { Inline } from '../inline'
 import { Stack } from '../stack'
 import { TextInput } from '../text-input'

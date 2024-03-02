@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-interface HorizontalLineProps {
+export interface HorizontalLineProps {
   thickness?: number
   color?: string
   className?: string

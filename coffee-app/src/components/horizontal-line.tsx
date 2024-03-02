@@ -7,7 +7,7 @@ export interface HorizontalLineProps {
   className?: string
 }
 
-export function HorizontalLine({ thickness = 2, className, color }: HorizontalLineProps) {
+export function HorizontalLine({ thickness = 2, color }: HorizontalLineProps) {
   return (
     <div
       className={classNames('border-b', `${color}`)}

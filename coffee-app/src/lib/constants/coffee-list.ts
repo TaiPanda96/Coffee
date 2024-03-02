@@ -19,7 +19,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/rooster-coffee.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'rooster',
     intensity: 'Light',
     acidity: 'Slightly',
@@ -29,7 +29,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/catfish.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'catfish',
     intensity: 'Medium Full',
     funk: 'Mild Funk',
@@ -39,7 +39,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/specialty-coffee.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'turbo-expresso',
     intensity: 'Medium Full',
     acidity: 'Tart',
@@ -57,7 +57,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/detour.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'detour',
     intensity: 'Medium',
     acidity: 'Slightly',
@@ -66,7 +66,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/catfish.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'catfish',
     intensity: 'Medium',
     acidity: 'Slightly',
@@ -75,7 +75,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/specialty-coffee.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'turbo-expresso',
     intensity: 'Medium',
     acidity: 'Slightly',
@@ -93,7 +93,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/detour.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'detour',
     intensity: 'Medium',
     acidity: 'Slightly',
@@ -102,7 +102,7 @@ export const coffeeList: Coffee[] = [
   {
     title: 'Coffee',
     description: 'Fruity, Floral, Bright',
-    image: '/catfish.jpeg',
+    image: '/spirit-animal.jpeg',
     slug: 'catfish',
     intensity: 'Medium',
     acidity: 'Slightly',

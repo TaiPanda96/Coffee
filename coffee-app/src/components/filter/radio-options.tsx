@@ -4,7 +4,6 @@ import { FilterOptionProps } from './filter-options'
 import classNames from 'classnames'
 import { MenuOptions } from './menu-options'
 import { Button } from '../button'
-import { IoFilterSharp } from 'react-icons/io5'
 import { SectionCard } from '../section-card'
 
 export function RadioOptions({ title, filterOptions, onChange }: FilterOptionProps) {
@@ -18,23 +17,18 @@ export function RadioOptions({ title, filterOptions, onChange }: FilterOptionPro
     <div
       className={classNames(
         'flex',
-        'rounded-full',
-        'border-brand-900',
-        'bg-gray-200',
+        'bg-brand-1500',
         ' text-brand-900',
-        ' hover:text-brand-1400',
         ' hover:bg-gray-300',
         'transition-colors',
       )}
     >
       <Stack gap={2}>
-        <Button title={title || 'Filter'} onClick={handleRadioOptionsVisibility}>
-          <IoFilterSharp strokeLinecap="round" strokeLinejoin="round" />
-        </Button>
+        <Button title={title || 'Filter'} onClick={handleRadioOptionsVisibility} />
         <br></br>
         {isModalVisible && (
           <div className="z-10 mr-2 fixed mt-8 justify-center">
-            <SectionCard className="bg-brand-1100 mt-11 fixed justify-center flex">
+            <SectionCard className="bg-brand-1500 mt-11 fixed justify-center flex">
               <Stack gap={2}>
                 <ol
                   className={classNames(

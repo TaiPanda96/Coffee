@@ -1,18 +1,15 @@
-import { TopNavigationComponent, Breadcrumb } from '@/components/top-navigation'
 import { FilterContainer } from '@/components/filter/container'
 import { coffeeList } from '../../lib/constants/coffee-list'
 import { filterCategories } from '@/lib/constants/filter-categories'
+import { Stack } from '@/components/stack'
+import { TextInput } from '@/components/text-input'
 
 export default function HomePage() {
-  const tabs: Breadcrumb[] = [
-    { label: 'Home', href: '/home' },
-    { label: 'Features', href: '/product' },
-    { label: 'Our Story', href: '/about' },
-  ]
-
   return (
-    <div>
-      <TopNavigationComponent breadcrumbs={tabs} />
+    <div className="mt-11 ml-11">
+      <Stack gap={4} align="left">
+        <TextInput color="brand" value={'Your Next Cup'} as="h1" bold />
+      </Stack>
       <FilterContainer filterOptions={filterCategories} data={coffeeList} />
     </div>
   )

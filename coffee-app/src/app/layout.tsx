@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import CustomCursor from '@/components/cursor'
+import classNames from 'classnames'
 
 export const metadata: Metadata = {
   title: 'Your Next Cup',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={'bg-white text-black font-trap'}>
+      <body className={classNames('bg-brand-1500', 'font-trap')}>
         {children}
         <CustomCursor />
       </body>

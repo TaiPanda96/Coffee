@@ -4,14 +4,11 @@ import { Inline } from '../inline'
 import { FilterOptions } from './filter-options'
 import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
-import { Coffee, BrewMethod } from '@/lib/constants/coffee-list'
+import { Coffee } from '@/lib/constants/coffee-list'
 import React, { useState } from 'react'
 import { HorizontalLine } from '../horizontal-line'
 import { Item } from '../item'
 import { Stack } from '../stack'
-import Image from 'next/image'
-import { SectionCard } from '../section-card'
-import { TextInput } from '../text-input'
 import { motion } from 'framer-motion'
 import { camelCase } from 'lodash'
 
@@ -59,35 +56,18 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
     setCoffeeData(filteredData)
   }
 
-  const shelves = groupItemsInShelves(coffeeData, coffeeData.length <= 4 ? 1 : 2)
+  const coffeeShelves = groupItemsInShelves(coffeeData, coffeeData.length <= 4 ? 1 : 2)
 
   return (
-    <div
-      className={classNames(
-        'flex',
-        'flex-col',
-        'items-center',
-        'justify-center',
-        'bg-brand-1100',
-        'py-12',
-      )}
-    >
+    <div className={classNames('flex', 'justify-center', 'bg-brand-1500', 'py-12')}>
       <Stack gap={6}>
-        <SectionCard className="bg-brand-1100 mb-4">
-          <Stack gap={8}>
-            <Inline gap={6} justify="center" className="mt-6">
-              <TextInput
-                value={'Discover your next great cup of coffee.'}
-                color="brand"
-                bold
-                as="h1"
-                size="lg"
-              />
-            </Inline>
+        <Stack gap={8}>
+          <Inline gap={4} justify="center" className="mt-6">
             <div
               className={classNames(
+                'bg-brand-1500',
+                'shadow-md brown-shadow',
                 'flex',
-                'rounded-full',
                 'py-0',
                 'px-10',
                 'text-sm',
@@ -96,54 +76,79 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
             >
               {filterOptions.map((filter, idx) => (
                 <Inline key={idx} gap={2} justify="center">
-                  {filter.typeOfFilter === 'radio' && (
-                    <RadioOptions
-                      title={filter.title}
-                      gap={4}
-                      grow={true}
-                      filterOptions={filter.options.map((option) => ({ label: option }))}
-                      onChange={(event) => applyFilter(event, filter.title)}
-                    />
-                  )}
-                  {idx === filterOptions.length - 1 ? null : (
-                    <div className=" border-gray-400 h-14"></div>
-                  )}
+                  <React.Fragment key={idx}>
+                    {filter.typeOfFilter === 'radio' && (
+                      <RadioOptions
+                        title={filter.title}
+                        gap={4}
+                        grow={true}
+                        filterOptions={filter.options.map((option) => ({ label: option }))}
+                        onChange={(event) => applyFilter(event, filter.title)}
+                      />
+                    )}
+                    {idx < filterOptions.length - 1 && (
+                      <div
+                        style={{
+                          height: '50px',
+                          width: '1px',
+                          backgroundColor: '#000000',
+                          alignSelf: 'center',
+                        }}
+                      />
+                    )}
+                  </React.Fragment>
                 </Inline>
               ))}
             </div>
-          </Stack>
-        </SectionCard>
-      </Stack>
+          </Inline>
 
-      <Stack gap={2}>
-        <HorizontalLine thickness={20} color="#3A3226" />
-        <Inline gap={8} justify="between">
-          {shelves.map((shelf: any[], shelfIndex: number) => (
-            <React.Fragment key={`shelf-${shelfIndex}`}>
-              <Stack gap={8} className="flex-wrap">
-                {shelf.map((coffee) => (
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Item
-                      key={coffee.slug}
-                      className="bg-brand-1300 flex-wrap"
-                      title={coffee.title}
-                      description={coffee.description}
-                      slug={coffee.slug}
-                      children={
-                        <Image
-                          src={coffee.image}
-                          width={200}
-                          height={200}
-                          className="rounded-full item:hover"
-                          alt={coffee.title}
-                        />
-                      }
-                    />
-                  </motion.div>
-                ))}
-              </Stack>
-            </React.Fragment>
-          ))}
+          <Inline justify="between">
+            {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => {
+              return <ShelfComponent key={idx} coffeesOnShelf={coffeesOnShelf} />
+            })}
+          </Inline>
+        </Stack>
+        <HorizontalLine thickness={8} color="#deb887" />
+      </Stack>
+    </div>
+  )
+}
+
+export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
+  return (
+    <Stack gap={6}>
+      <Inline justify="between">
+        <Rows coffeesOnShelf={coffeesOnShelf} />
+      </Inline>
+    </Stack>
+  )
+}
+
+export function Rows({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
+  return (
+    <div className="shelf-container">
+      <Stack gap={2} className="flex-wrap">
+        <Inline justify="between">
+          <div className="shelf-container">
+            <Stack gap={8} className="flex-wrap">
+              {coffeesOnShelf.map((coffee) => (
+                <motion.div
+                  key={`coffee-${coffee.slug}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Item
+                    key={coffee.slug}
+                    className="bg-brand-1300 flex-wrap"
+                    title={coffee.title}
+                    description={coffee.description}
+                    slug={coffee.slug}
+                    coffee={coffee}
+                  />
+                </motion.div>
+              ))}
+            </Stack>
+          </div>
         </Inline>
       </Stack>
     </div>

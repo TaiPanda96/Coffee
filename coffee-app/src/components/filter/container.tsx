@@ -59,67 +59,61 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
   const coffeeShelves = groupItemsInShelves(coffeeData, coffeeData.length <= 4 ? 1 : 2)
 
   return (
-    <div className={classNames('flex', 'justify-center', 'bg-brand-1500', 'py-12')}>
-      <Stack gap={6}>
-        <Stack gap={8}>
-          <Inline gap={4} justify="center" className="mt-6">
-            <div
-              className={classNames(
-                'bg-brand-1500',
-                'shadow-md brown-shadow',
-                'flex',
-                'py-0',
-                'px-10',
-                'text-sm',
-                'font-semibold',
-              )}
-            >
-              {filterOptions.map((filter, idx) => (
-                <Inline key={idx} gap={2} justify="center">
-                  <React.Fragment key={idx}>
-                    {filter.typeOfFilter === 'radio' && (
-                      <RadioOptions
-                        title={filter.title}
-                        gap={4}
-                        grow={true}
-                        filterOptions={filter.options.map((option) => ({ label: option }))}
-                        onChange={(event) => applyFilter(event, filter.title)}
-                      />
-                    )}
-                    {idx < filterOptions.length - 1 && (
-                      <div
-                        style={{
-                          height: '50px',
-                          width: '1px',
-                          backgroundColor: '#000000',
-                          alignSelf: 'center',
-                        }}
-                      />
-                    )}
-                  </React.Fragment>
-                </Inline>
-              ))}
-            </div>
-          </Inline>
+    <Stack gap={8}>
+      <Inline justify="center" className="mt-6">
+        <div
+          className={classNames(
+            'bg-brand-1500',
+            'shadow-xl brown-shadow',
+            'flex',
+            'px-8',
+            'text-sm',
+            'font-semibold',
+          )}
+        >
+          {filterOptions.map((filter, idx) => (
+            <Inline key={idx} justify="left">
+              <React.Fragment key={idx}>
+                {filter.typeOfFilter === 'radio' && (
+                  <RadioOptions
+                    title={filter.title}
+                    gap={4}
+                    grow={true}
+                    filterOptions={filter.options.map((option) => ({ label: option }))}
+                    onChange={(event) => applyFilter(event, filter.title)}
+                  />
+                )}
+                {idx < filterOptions.length - 1 && (
+                  <div
+                    className="mr-4 mt-2 mb-2 bg-brand-900"
+                    style={{
+                      height: '50px',
+                      width: '1px',
+                      backgroundColor: '#000000',
+                      alignSelf: 'center',
+                    }}
+                  />
+                )}
+              </React.Fragment>
+            </Inline>
+          ))}
+        </div>
+      </Inline>
 
-          <Inline justify="between">
-            {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => {
-              return <ShelfComponent key={idx} coffeesOnShelf={coffeesOnShelf} />
-            })}
-          </Inline>
-        </Stack>
-        <HorizontalLine thickness={8} color="#deb887" />
-      </Stack>
-    </div>
+      <Inline className="mt-6" justify="center">
+        {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => {
+          return <ShelfComponent key={idx} coffeesOnShelf={coffeesOnShelf} />
+        })}
+      </Inline>
+      <HorizontalLine thickness={8} color="#deb887" />
+    </Stack>
   )
 }
 
 export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
   return (
     <Stack gap={6}>
-      <Inline justify="between">
-        <Rows coffeesOnShelf={coffeesOnShelf} />
-      </Inline>
+      <Rows coffeesOnShelf={coffeesOnShelf} />
     </Stack>
   )
 }
@@ -128,7 +122,7 @@ export function Rows({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
   return (
     <div className="shelf-container">
       <Stack gap={2} className="flex-wrap">
-        <Inline justify="between">
+        <Inline>
           <div className="shelf-container">
             <Stack gap={8} className="flex-wrap">
               {coffeesOnShelf.map((coffee) => (

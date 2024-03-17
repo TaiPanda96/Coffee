@@ -5,18 +5,18 @@ export const filterCategories = [
     typeOfFilter: 'radio',
   },
   {
-    title: 'Acidity',
+    title: 'Body',
     options: ['Slightly', 'Tart', 'Zesty', 'Sharp'],
     typeOfFilter: 'radio',
   },
   {
-    title: 'Intensity',
+    title: 'Acidity',
     options: ['Light', 'Medium', 'Medium Full', 'Full', 'Extra Full', 'Extra Light'],
     typeOfFilter: 'radio',
   },
   {
-    title: 'Funk',
-    options: ['No Funk', 'Mild Funk', 'Tropical Funk'],
+    title: 'Process',
+    options: ['Washed', 'Natural', 'Honey'],
     typeOfFilter: 'radio',
   },
 ]

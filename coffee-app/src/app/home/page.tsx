@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div className="mt-11 ml-11">
       <Stack gap={4} align="left">
-        <TextInput color="brand" value={'Your Next Cup'} as="h1" bold />
+        <TextInput color="regular" value={'Your Next Cup'} as="h1" bold />
       </Stack>
       <FilterContainer filterOptions={filterCategories} data={coffeeList} />
     </div>

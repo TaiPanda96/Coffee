@@ -8,7 +8,7 @@ import { SectionCard } from '../section-card'
 import { TextInput } from '../text-input'
 import { Inline } from '../inline'
 
-export function RadioOptions({ title, filterOptions, onChange }: FilterOptionProps) {
+export function RadioOptions({ title, description, filterOptions, onChange }: FilterOptionProps) {
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const handleRadioOptionsVisibility = useCallback(() => {
@@ -22,7 +22,7 @@ export function RadioOptions({ title, filterOptions, onChange }: FilterOptionPro
           <TextInput value={title} color="regular" />
           <Button onClick={handleRadioOptionsVisibility} />
         </Inline>
-        <span className="text-sm text-gray-500">Filter by {title}</span>
+        <span className="text-sm text-brand-1700">{description}</span>
       </Stack>
       {isModalVisible && (
         <div className="z-10 mr-2 fixed mt-8 justify-center">

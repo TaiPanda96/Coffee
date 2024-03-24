@@ -8,6 +8,7 @@ import { Stack } from '../stack'
 
 export interface FilterOptionProps {
   title?: string
+  description?: string
   children?: ReactNode
   className?: string
   gap?: number

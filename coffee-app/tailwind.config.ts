@@ -29,6 +29,8 @@ const config: Config = {
           1400: '#3A3226',
           1500: '#EDF2EA',
           1600: '#FFFBE9',
+          1700: '#4c4c4c',
+          1800: '#ABC069',
         },
       },
       fontFamily: {

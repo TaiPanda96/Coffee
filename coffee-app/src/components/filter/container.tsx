@@ -11,6 +11,9 @@ import { Item } from '../item'
 import { Stack } from '../stack'
 import { motion } from 'framer-motion'
 import { camelCase } from 'lodash'
+import { ShelfComponent } from './shelf'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const availableFilters = {
   radio: RadioOptions,
@@ -20,6 +23,7 @@ export const availableFilters = {
 
 export interface FilterContainerProps {
   filterOptions: Array<{
+    description: string
     title: string
     options: string[]
     sliderOptions?: {
@@ -77,6 +81,7 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
                 {filter.typeOfFilter === 'radio' && (
                   <RadioOptions
                     title={filter.title}
+                    description={filter.description || ''}
                     gap={4}
                     grow={true}
                     filterOptions={filter.options.map((option) => ({ label: option }))}
@@ -94,6 +99,37 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
                     }}
                   />
                 )}
+
+                {idx === filterOptions.length - 1 && (
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={classNames(
+                      'flex',
+                      'rounded-full',
+                      'px-2',
+                      'py-2',
+                      'bg-brand-1800',
+                      'border-brand-900',
+                      ' text-brand-900',
+                      ' hover:text-brand-1400',
+                      'transition-colors',
+                    )}
+                  >
+                    <Stack gap={0.5} align="center">
+                      <FontAwesomeIcon
+                        icon={faSearch}
+                        size="2x"
+                        style={{
+                          alignSelf: 'center',
+                          cursor: 'pointer',
+                          marginLeft: '2.5px',
+                          marginRight: '2.5px',
+                        }}
+                      />
+                    </Stack>
+                  </motion.button>
+                )}
               </React.Fragment>
             </Inline>
           ))}
@@ -105,46 +141,6 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
           return <ShelfComponent key={idx} coffeesOnShelf={coffeesOnShelf} />
         })}
       </Inline>
-      <HorizontalLine thickness={8} color="#deb887" />
     </Stack>
-  )
-}
-
-export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
-  return (
-    <Stack gap={6}>
-      <Rows coffeesOnShelf={coffeesOnShelf} />
-    </Stack>
-  )
-}
-
-export function Rows({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
-  return (
-    <div className="shelf-container">
-      <Stack gap={2} className="flex-wrap">
-        <Inline>
-          <div className="shelf-container">
-            <Stack gap={8} className="flex-wrap">
-              {coffeesOnShelf.map((coffee) => (
-                <motion.div
-                  key={`coffee-${coffee.slug}`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Item
-                    key={coffee.slug}
-                    className="bg-brand-1300 flex-wrap"
-                    title={coffee.title}
-                    description={coffee.description}
-                    slug={coffee.slug}
-                    coffee={coffee}
-                  />
-                </motion.div>
-              ))}
-            </Stack>
-          </div>
-        </Inline>
-      </Stack>
-    </div>
   )
 }

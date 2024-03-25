@@ -3,8 +3,14 @@ import { motion } from 'framer-motion'
 import { Inline } from '../inline'
 import { Item } from '../item'
 import { Stack } from '../stack'
+import { HorizontalLine } from '../horizontal-line'
 
-export function Rows({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
+export function Rows({
+  coffeesOnShelf,
+}: {
+  coffeesOnShelf: Coffee[]
+  includeShelfIndicator?: boolean
+}) {
   return (
     <div className="shelf-container">
       <Stack gap={2} className="flex-wrap">

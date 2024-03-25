@@ -6,6 +6,7 @@ import { TextInput } from './text-input'
 import styles from './item.module.css'
 import { Coffee } from '@/lib/constants/coffee-list'
 import Link from 'next/link'
+import { HorizontalLine } from './horizontal-line'
 
 export interface ItemProps {
   key: string
@@ -21,14 +22,17 @@ export interface ItemProps {
 export function Item({ slug, title, coffee }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
-      <Link href={`/product/${slug}`}>
-        <img
-          src={coffee?.image}
-          width={200}
-          height={200}
-          className={classNames(styles.itemHover)}
-        />
-      </Link>
+      <Stack gap={0.5}>
+        <Link href={`/product/${slug}`}>
+          <img
+            src={coffee?.image}
+            width={200}
+            height={200}
+            className={classNames(styles.itemHover)}
+          />
+          <HorizontalLine thickness={14} color="#e2af51" />
+        </Link>
+      </Stack>
     </div>
   )
 }

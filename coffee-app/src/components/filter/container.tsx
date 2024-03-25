@@ -6,14 +6,13 @@ import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
 import { Coffee } from '@/lib/constants/coffee-list'
 import React, { useState } from 'react'
-import { HorizontalLine } from '../horizontal-line'
-import { Item } from '../item'
 import { Stack } from '../stack'
 import { motion } from 'framer-motion'
 import { camelCase } from 'lodash'
 import { ShelfComponent } from './shelf'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { HorizontalLine } from '../horizontal-line'
 
 export const availableFilters = {
   radio: RadioOptions,
@@ -61,7 +60,6 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
   }
 
   const coffeeShelves = groupItemsInShelves(coffeeData, coffeeData.length <= 4 ? 1 : 2)
-
   return (
     <Stack gap={8}>
       <Inline justify="center" className="mt-6">
@@ -137,9 +135,11 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
       </Inline>
 
       <Inline className="mt-6" justify="center">
-        {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => {
-          return <ShelfComponent key={idx} coffeesOnShelf={coffeesOnShelf} />
-        })}
+        {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => (
+          <React.Fragment key={idx}>
+            <ShelfComponent coffeesOnShelf={coffeesOnShelf} />
+          </React.Fragment>
+        ))}
       </Inline>
     </Stack>
   )

@@ -1,9 +1,8 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 import styles from './product-profile-list.module.css'
 import { Coffee } from '@/lib/constants/coffee-list'
 import { Stack } from '../stack'
-import Link from 'next/link'
 import { Navigation } from '../navigation'
 import classNames from 'classnames'
 import { getProductProfilePath } from '@/app/product/[...slug]/path'
@@ -25,6 +24,7 @@ export function toTitleCase(str: string) {
 
 export function ProductProfiles({ products, params }: PressMenuProps) {
   const liRefs = useRef<HTMLLIElement[]>([])
+  const productRefs: MutableRefObject<(HTMLDivElement | null)[]> = useRef([])
   const [product, setProduct] = useState(
     products.find((product) => params.slug.includes(product.slug)),
   )
@@ -39,10 +39,14 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
   }, [])
 
   const handleScrollPosition = (index: number) => {
-    const currentLi = liRefs.current[index]
-    currentLi.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    const product = products.find((product) => product.slug === currentLi.textContent)
+    const productRef = productRefs.current[index] as HTMLElement
+    if (productRef) {
+      productRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+    const product = products[index]
     setProduct(product)
+    // Update the browser URL without navigating
+    window.history.pushState({}, '', getProductProfilePath({ params: { slug: product?.slug } }))
   }
 
   /**
@@ -74,14 +78,13 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
                   key={i}
                   className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
                 >
-                  <Link
+                  <a
                     onClick={() => handleScrollPosition(i)}
-                    href={getProductProfilePath({ params: { slug: product.slug } })}
                     className={classNames('hover:text-gray-400', 'transition-colors')}
                   >
                     <div className={`${styles.hoverText}`}> {toTitleCase(product.slug)}</div>
                     <span className={`${styles.line} js-line`} />
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -91,7 +94,7 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
         <div className="scrollable-content">
           {products.map((product, i) => {
             return (
-              <div className="flex-col p-11" key={i}>
+              <div className="flex-col p-11" key={i} ref={(el) => (productRefs.current[i]! = el!)}>
                 <Stack gap={6} className="flex-col p-11">
                   <Inline
                     gap={8}

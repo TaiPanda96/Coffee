@@ -38,8 +38,10 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
     }
   }, [])
 
-  const handleProductClick = (productSlug: string) => {
-    const product = products.find((product) => product.slug === productSlug)
+  const handleScrollPosition = (index: number) => {
+    const currentLi = liRefs.current[index]
+    currentLi.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    const product = products.find((product) => product.slug === currentLi.textContent)
     setProduct(product)
   }
 
@@ -60,42 +62,51 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
   }
 
   return (
-    <>
-      <Inline justify="between" align="center" gap={8}>
-        <div className="w-1/3 bg-gray-400 ml-auto px-8">
-          <Stack gap={8} align="left">
-            <div className="fixed left-6 top-1/2 transform -translate-y-1/2">
-              <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/home' }]} />
-              <ul>
-                {products.map((product, i) => (
-                  <li
-                    ref={(el) => (liRefs.current[i] = el!)}
-                    key={i}
-                    className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
+    <div className="min-h-screen">
+      <Inline justify="between" align="center" gap={6}>
+        <div className="w-1/3 ml-auto">
+          <div className="fixed  left-6 top-1/2 transform -translate-y-1/2">
+            <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/home' }]} />
+            <ul>
+              {products.map((product, i) => (
+                <li
+                  ref={(el) => (liRefs.current[i] = el!)}
+                  key={i}
+                  className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
+                >
+                  <Link
+                    onClick={() => handleScrollPosition(i)}
+                    href={getProductProfilePath({ params: { slug: product.slug } })}
+                    className={classNames('hover:text-gray-400', 'transition-colors')}
                   >
-                    <Link
-                      onClick={() => handleProductClick(product.slug)}
-                      href={getProductProfilePath({ params: { slug: product.slug } })}
-                      className={classNames('hover:text-gray-400', 'transition-colors')}
-                    >
-                      <div className={`${styles.hoverText}`}> {toTitleCase(product.slug)}</div>
-                      <span className={`${styles.line} js-line`} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Stack>
+                    <div className={`${styles.hoverText}`}> {toTitleCase(product.slug)}</div>
+                    <span className={`${styles.line} js-line`} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="scrollable-content">
+          {products.map((product, i) => {
+            return (
+              <div className="flex-col p-11" key={i}>
+                <Stack gap={6} className="flex-col p-11">
+                  <Inline
+                    gap={8}
+                    justify="between"
+                    className={classNames('flex items-center', 'flex-grow', 'p-8')}
+                  >
+                    <img src={product.image} />
+                    <ProductDetails product={product} />
+                  </Inline>
+                </Stack>
+              </div>
+            )
+          })}
         </div>
       </Inline>
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-4xl mx-auto">
-          <Inline className={classNames('p-10 flex-grow')} gap={4}>
-            <img src="/spirit-animal.jpeg" alt="coffee bag" />
-            <ProductDetails product={product} />
-          </Inline>
-        </div>
-      </div>
-    </>
+    </div>
   )
 }

@@ -16,7 +16,7 @@ export interface ProductContainerProps {
 
 export function ProductDetails({ product, children }: ProductContainerProps) {
   return (
-    <Stack gap={4} className="flex-grow">
+    <Stack gap={6} className="flex-col p-11">
       <Inline
         gap={8}
         justify="between"
@@ -28,7 +28,7 @@ export function ProductDetails({ product, children }: ProductContainerProps) {
         )}
       >
         {children}
-        <Stack gap={8} align="left" className="flex flex-col flex-grow">
+        <Stack gap={8} align="left">
           <Inline gap={8} justify="between">
             <TextInput
               value={toTitleCase(product?.slug ?? 'Rooster')}
@@ -45,16 +45,16 @@ export function ProductDetails({ product, children }: ProductContainerProps) {
           </Inline>
 
           <Inline gap={4} justify="between">
-            <Badge size="md" rounded label="$12.99" />
+            <Badge size="sm" rounded label="$12.99" />
             <span>|</span>
-            <Badge size="md" rounded label="in stock" />
+            <Badge size="sm" rounded label="in stock" />
           </Inline>
 
           <TextInput
             value={'What they say about this coffee'}
             color="regular"
             as="span"
-            size="md"
+            size="sm"
           />
           <TextInput
             value={`"This coffee is a medium-dark roast, with a rich, full-bodied flavor and a smooth finish. It’s a blend of 100% Arabica beans from Central and South America, and it’s certified organic and fair trade."`}
@@ -64,7 +64,7 @@ export function ProductDetails({ product, children }: ProductContainerProps) {
           />
 
           <Inline justify="between" grow className="gap-2">
-            <TextInput value={'Details'} color="regular" as="span" size="md" bold />
+            <TextInput value={'Details'} color="regular" as="span" size="sm" bold />
           </Inline>
 
           <Stack gap={8} align="left">

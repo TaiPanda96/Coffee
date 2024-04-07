@@ -2,10 +2,11 @@
 
 import classNames from 'classnames'
 import Link from 'next/link'
-import { ReactNode, isValidElement } from 'react'
 import { Inline } from './inline'
 import { Stack } from './stack'
 import { TextInput } from './text-input'
+import { faMugHot } from '@fortawesome/free-solid-svg-icons/faMugHot'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface Breadcrumb {
   label: string
@@ -15,8 +16,6 @@ export interface Breadcrumb {
 export interface TopNavigationProps {
   className?: string
   breadcrumbs?: Array<{ loading: true } | Breadcrumb>
-  headingBottom?: ReactNode
-  headingRight?: ReactNode
   headingSize?: '3xl'
   tabs?: {
     current?: string
@@ -29,10 +28,10 @@ export interface TopNavigationProps {
   }
 }
 
-export function TopNavigationComponent({ className, breadcrumbs }: TopNavigationProps) {
+export function Navigation({ className, breadcrumbs }: TopNavigationProps) {
   return (
     <>
-      <Stack gap={4} className={classNames('bg-brand-900 py-8 px-4 sm:px-8', className)}>
+      <Stack gap={4} className={classNames(className)}>
         {breadcrumbs && (
           <Inline justify="right" align="center">
             {breadcrumbs.map((breadcrumb, index) => {
@@ -50,10 +49,10 @@ export function TopNavigationComponent({ className, breadcrumbs }: TopNavigation
               return (
                 <Inline key={index} gap={1}>
                   <Link key={index} href={breadcrumb.href}>
+                    <FontAwesomeIcon icon={faMugHot} size="lg" style={{ color: '#3A3226' }} />
                     <TextInput
                       value={breadcrumb.label}
-                      color="inverted-light"
-                      className="text-sm hover:text-white transition-colors justify-right mr-2 ml-2"
+                      className="text-sm hover:text-gray-500 transition-colors justify-right mr-2 ml-2"
                       as="span"
                     />
                   </Link>

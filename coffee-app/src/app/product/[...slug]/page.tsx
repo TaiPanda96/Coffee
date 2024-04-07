@@ -1,63 +1,10 @@
 'use client'
-import { Inline } from '@/components/inline'
-import { ProductContainer } from '@/components/product/container'
-import { Breadcrumb, TopNavigationComponent } from '@/components/top-navigation'
-import { coffeeList } from '@/lib/constants/coffee-list'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image'
-import React from 'react'
+import ProductProfileLayout from './layout'
 
-export default function ProductProfile({ params }: { params: { slug: string } }) {
-  const tabs: Breadcrumb[] = [
-    { label: 'Home', href: '/home' },
-    { label: 'Features', href: '/product' },
-    { label: 'Our Story', href: '/about' },
-  ]
-  const [itemIdx, setScrollIdx] = React.useState(0)
-  const [product, setProduct] = React.useState(
-    coffeeList.find((product) => params.slug.includes(product.slug)),
-  )
-
-  const handleScrolling = (index: number) => {
-    const newProduct = coffeeList[index]
-    setProduct(newProduct)
-
-    setScrollIdx(index)
-  }
-
+export default function ProductsPage({ params }: { params: { slug: string } }) {
   return (
     <>
-      <TopNavigationComponent breadcrumbs={tabs} />
-
-      <ProductContainer
-        className="bg-brand-1100"
-        slug={product?.slug ?? 'specialty-coffee'}
-        children={
-          <Image
-            src={product?.image ?? '/specialty-coffee.jpeg'}
-            width={650}
-            height={650}
-            className="rounded-full"
-            alt={''}
-          />
-        }
-      />
-
-      <div className="scroll-content">
-        <Inline gap={2} justify="center">
-          {coffeeList.map((item, idx) => (
-            <div className="scroll-item" key={idx}>
-              <FontAwesomeIcon
-                className="cursor-pointer transition-transform duration-200 hover:scale-150"
-                icon={faCoffee}
-                size="2xl"
-                onClick={() => handleScrolling(idx)}
-              />
-            </div>
-          ))}
-        </Inline>
-      </div>
+      <ProductProfileLayout params={params} />
     </>
   )
 }

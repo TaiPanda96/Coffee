@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { Inline } from '../inline'
 import { Item } from '../item'
 import { Stack } from '../stack'
-import { HorizontalLine } from '../horizontal-line'
 
 export function Rows({
   coffeesOnShelf,

@@ -12,7 +12,6 @@ import { camelCase } from 'lodash'
 import { ShelfComponent } from './shelf'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { HorizontalLine } from '../horizontal-line'
 
 export const availableFilters = {
   radio: RadioOptions,

@@ -1,8 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Inline } from './inline'
 import { Stack } from './stack'
-import { TextInput } from './text-input'
 import styles from './item.module.css'
 import { Coffee } from '@/lib/constants/coffee-list'
 import Link from 'next/link'
@@ -19,7 +17,7 @@ export interface ItemProps {
   slug: string
 }
 
-export function Item({ slug, title, coffee }: ItemProps) {
+export function Item({ slug, coffee }: ItemProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <Stack gap={0.5}>

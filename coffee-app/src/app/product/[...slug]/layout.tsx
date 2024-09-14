@@ -1,6 +1,7 @@
 'use client'
 import { Inline } from '@/components/inline'
-import { ProductProfiles } from '@/components/product-profile/product-profile-list'
+import { Navigation } from '@/components/navigation'
+import { ProfileList } from '@/components/product-profile/profile-list'
 import { Stack } from '@/components/stack'
 import { TextInput } from '@/components/text-input'
 import { coffeeList } from '@/lib/constants/coffee-list'
@@ -14,20 +15,23 @@ export interface ProductProfilesLayoutProps {
 
 export default function ProductProfilesLayout({ params }: ProductProfilesLayoutProps) {
   return (
-    <Stack gap={8} align="left">
-      <Inline justify="between" align="center" gap={4}>
-        <img src="/home-logo.png" alt="hero-image" />
-        <TextInput
-          className={classNames('text-gray-600')}
-          value="Your Next Cup..."
-          as="h1"
-          bold
-          size="xl"
-        />
-        <TextInput color="regular" value="filtered" as="h1" size="lg" bold nowrap />
-      </Inline>
-
-      <ProductProfiles products={coffeeList} params={params} />
-    </Stack>
+    <>
+      <div className="fixed top-10 left-[-0.025%]">
+        <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/home' }]} />
+      </div>
+      <Stack gap={8} align="center">
+        <Inline justify="between" align="center" gap={4}>
+          <img src="/home-logo.png" alt="hero-image" />
+          <TextInput
+            className={classNames('text-gray-600')}
+            value="Your Next Cup Shortlist"
+            as="h1"
+            bold
+            size="xl"
+          />
+        </Inline>
+        <ProfileList products={coffeeList} params={params} />
+      </Stack>
+    </>
   )
 }

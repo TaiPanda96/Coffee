@@ -1,13 +1,12 @@
 'use client'
 import { MutableRefObject, useEffect, useRef, useState } from 'react'
-import styles from './product-profile-list.module.css'
+import styles from './profile-list.module.css'
 import { Coffee } from '@/lib/constants/coffee-list'
 import { Stack } from '../stack'
-import { Navigation } from '../navigation'
 import classNames from 'classnames'
 import { getProductProfilePath } from '@/app/product/[...slug]/path'
 import { Inline } from '../inline'
-import { ProductDetails } from './product-details'
+import { ProductDetail } from './carousel'
 
 export interface PressMenuProps {
   params: {
@@ -22,7 +21,7 @@ export function toTitleCase(str: string) {
   })
 }
 
-export function ProductProfiles({ products, params }: PressMenuProps) {
+export function ProfileList({ products, params }: PressMenuProps) {
   const liRefs = useRef<HTMLLIElement[]>([])
   const productRefs: MutableRefObject<(HTMLDivElement | null)[]> = useRef([])
   const [product, setProduct] = useState(
@@ -66,50 +65,43 @@ export function ProductProfiles({ products, params }: PressMenuProps) {
   }
 
   return (
-    <div className="min-h-screen">
-      <Inline justify="between" align="center" gap={6}>
-        <div className="w-1/3 ml-auto">
-          <div className="fixed  left-6 top-1/2 transform -translate-y-1/2">
-            <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/home' }]} />
-            <ul>
-              {products.map((product, i) => (
-                <li
-                  ref={(el) => (liRefs.current[i] = el!)}
-                  key={i}
-                  className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
-                >
-                  <a
-                    onClick={() => handleScrollPosition(i)}
-                    className={classNames('hover:text-gray-400', 'transition-colors')}
-                  >
-                    <div className={`${styles.hoverText}`}> {toTitleCase(product.slug)}</div>
-                    <span className={`${styles.line} js-line`} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="fixed top-3/4 left-[-4.5%] transform -translate-y-1/2">
+        <ul>
+          {products.map((product, i) => (
+            <li
+              ref={(el) => (liRefs.current[i] = el!)}
+              key={i}
+              className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
+            >
+              <a
+                onClick={() => handleScrollPosition(i)}
+                className={`relative block ${styles.menuItem} hover:${styles.lineHover}`}
+              >
+                <div className={`${styles.hoverText}`}> {toTitleCase(product.slug)}</div>
+                <span className={`${styles.line} js-line`} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        <div className="scrollable-content">
-          {products.map((product, i) => {
-            return (
-              <div className="flex-col p-11" key={i} ref={(el) => (productRefs.current[i]! = el!)}>
-                <Stack gap={6} className="flex-col p-11">
-                  <Inline
-                    gap={8}
-                    justify="between"
-                    className={classNames('flex items-center', 'flex-grow', 'p-8')}
-                  >
-                    <img src={product.image} />
-                    <ProductDetails product={product} />
-                  </Inline>
-                </Stack>
-              </div>
-            )
-          })}
-        </div>
-      </Inline>
+      <Stack gap={6} align="center">
+        {products.map((product, i) => {
+          return (
+            <div
+              className="flex-col justify-center"
+              key={i}
+              ref={(el) => (productRefs.current[i]! = el!)}
+            >
+              <Inline gap={4}>
+                <img src={product.image} className={classNames(styles.image)} />
+                <ProductDetail product={product} />
+              </Inline>
+            </div>
+          )
+        })}
+      </Stack>
     </div>
   )
 }

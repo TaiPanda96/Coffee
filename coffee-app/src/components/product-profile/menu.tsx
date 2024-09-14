@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { Navigation } from '../navigation'
 import { Stack } from '../stack'
-import { toTitleCase } from './product-profile-list'
+import { toTitleCase } from './profile-list'
 import { Coffee } from '@/lib/constants/coffee-list'
 
 import styles from './product-profile-list.module.css'

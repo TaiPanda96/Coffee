@@ -4,11 +4,11 @@ import { TextInput } from '../components/text-input'
 import { Suspense } from 'react'
 import { CoffeeSection } from './coffee-section'
 
-function LoadingFallback() {
+function LoadingComponent() {
   return <div>Loading Coffee Selections...</div>
 }
 
-export default function HomePage() {
+export default function Home() {
   return (
     <div className="mt-11 ml-11">
       <Inline justify="between" align="center" gap={4}>
@@ -28,7 +28,7 @@ export default function HomePage() {
         />
       </Inline>
 
-      <Suspense fallback={<LoadingFallback />}>
+      <Suspense fallback={<LoadingComponent />}>
         <CoffeeSection />
       </Suspense>
     </div>

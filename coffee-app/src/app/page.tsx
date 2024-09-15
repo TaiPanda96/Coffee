@@ -1,6 +1,6 @@
-import { Inline } from '../../components/inline'
-import { Stack } from '../../components/stack'
-import { TextInput } from '../../components/text-input'
+import { Inline } from '../components/inline'
+import { Stack } from '../components/stack'
+import { TextInput } from '../components/text-input'
 import { Suspense } from 'react'
 import { CoffeeSection } from './coffee-section'
 

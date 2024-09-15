@@ -1,5 +1,5 @@
-import { FilterContainer } from '../../components/filter/container'
-import { getCoffeeAction } from './actions/get-coffee-action'
+import { FilterContainer } from '../components/filter/container'
+import { getCoffeeAction } from '../components/actions/get-coffee-action'
 
 export async function CoffeeSection() {
   const { data, filters } = await getCoffeeAction()

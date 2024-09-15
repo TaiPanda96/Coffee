@@ -1,6 +1,4 @@
-import { HomePath } from '../../path'
-
-export interface ProductProfilePathParams extends HomePath {
+export interface ProductProfilePathParams {
   params: {
     slug: string
   }

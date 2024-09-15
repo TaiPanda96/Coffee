@@ -18,7 +18,7 @@ export default function ProductProfilesLayout({ params }: ProductProfilesLayoutP
   return (
     <>
       <div className="fixed top-10 left-[-0.025%]">
-        <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/home' }]} />
+        <Navigation breadcrumbs={[{ label: 'Return To Coffee Shelf', href: '/' }]} />
       </div>
       <Stack gap={8} align="center">
         <Inline justify="between" align="center" gap={4}>

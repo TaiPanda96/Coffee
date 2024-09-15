@@ -12,7 +12,7 @@ import { camelCase } from 'lodash'
 import { ShelfComponent } from './shelf'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
+import { CoffeeDataOutput } from '../actions/get-coffee-action'
 
 export const availableFilters = {
   radio: RadioOptions,

@@ -1,4 +1,4 @@
-import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
+import { CoffeeDataOutput } from '../actions/get-coffee-action'
 import { Stack } from '../stack'
 import { Rows } from './rows'
 

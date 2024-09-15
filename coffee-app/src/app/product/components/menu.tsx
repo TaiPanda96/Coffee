@@ -1,14 +1,14 @@
 'use client'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { Navigation } from '../navigation'
-import { Stack } from '../stack'
+import { Navigation } from '../../../components/navigation'
+import { Stack } from '../../../components/stack'
 import { toTitleCase } from './profile-list'
 
 import styles from './product-profile-list.module.css'
 import { useEffect, useRef, useState } from 'react'
-import { Coffee } from '../../lib/constants/coffee-list'
-import { getProductProfilePath } from '../../app/product/[...slug]/path'
+import { Coffee } from '../../../lib/constants/coffee-list'
+import { getProductProfilePath } from '../[...slug]/path'
 
 export interface PressMenuProps {
   params: {

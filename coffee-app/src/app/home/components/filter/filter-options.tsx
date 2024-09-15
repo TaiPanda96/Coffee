@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import { useState, useCallback, ReactNode } from 'react'
 import { IoFilterSharp } from 'react-icons/io5'
-import { Button } from '../button'
+import { Button } from '../../../../components/button'
 import { ListOption } from './list-options'
-import { SectionCard } from '../section-card'
-import { Stack } from '../stack'
+import { SectionCard } from '../../../../components/section-card'
+import { Stack } from '../../../../components/stack'
 
 export interface FilterOptionProps {
   title?: string

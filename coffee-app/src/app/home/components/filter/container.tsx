@@ -1,18 +1,18 @@
 'use client'
 
 import classNames from 'classnames'
-import { Inline } from '../inline'
+import { Inline } from '../../../../components/inline'
 import { FilterOptions } from './filter-options'
 import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
 import React, { useState } from 'react'
-import { Stack } from '../stack'
+import { Stack } from '../../../../components/stack'
 import { motion } from 'framer-motion'
 import { camelCase } from 'lodash'
 import { ShelfComponent } from './shelf'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { CoffeeDataOutput } from '../../app/home/components/get-coffee-action'
+import { CoffeeDataOutput } from '../get-coffee-action'
 
 export const availableFilters = {
   radio: RadioOptions,

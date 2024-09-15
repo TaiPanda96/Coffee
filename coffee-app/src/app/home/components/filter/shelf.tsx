@@ -1,5 +1,5 @@
-import { CoffeeDataOutput } from '../../app/home/components/get-coffee-action'
-import { Stack } from '../stack'
+import { CoffeeDataOutput } from '../get-coffee-action'
+import { Stack } from '../../../../components/stack'
 import { Rows } from './rows'
 
 export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: CoffeeDataOutput[] }) {

@@ -3,7 +3,7 @@
 import classNames from 'classnames'
 import { Inline } from '../../../components/inline'
 import { Navigation } from '../../../components/navigation'
-import { ProfileList } from '../../../components/product-profile/profile-list'
+import { ProfileList } from '../components/profile-list'
 import { Stack } from '../../../components/stack'
 import { TextInput } from '../../../components/text-input'
 import { coffeeList } from '../../../lib/constants/coffee-list'

@@ -1,9 +1,9 @@
 'use client'
-import { Stack } from '../stack'
-import { Inline } from '../inline'
-import { TextInput } from '../text-input'
+import { Stack } from '../../../components/stack'
+import { Inline } from '../../../components/inline'
+import { TextInput } from '../../../components/text-input'
 import { toTitleCase } from './profile-list'
-import { Coffee } from '../../lib/constants/coffee-list'
+import { Coffee } from '../../../lib/constants/coffee-list'
 
 export interface ProductDetailProps {
   children?: React.ReactNode

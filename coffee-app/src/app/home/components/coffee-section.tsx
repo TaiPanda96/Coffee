@@ -1,4 +1,4 @@
-import { FilterContainer } from '../../../components/filter/container'
+import { FilterContainer } from './filter/container'
 import { getCoffeeAction } from './get-coffee-action'
 
 export async function CoffeeSection() {

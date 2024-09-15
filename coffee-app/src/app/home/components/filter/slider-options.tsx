@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react'
-import { Stack } from '../stack'
+import { Stack } from '../../../../components/stack'
 import classNames from 'classnames'
-import { Button } from '../button'
+import { Button } from '../../../../components/button'
 import { IoFilterSharp } from 'react-icons/io5'
-import { SectionCard } from '../section-card'
+import { SectionCard } from '../../../../components/section-card'
 import { Slider, SliderOptionsProps } from './slider'
 
 export function SliderOptions({ title, sliderOptions, filterOptions }: SliderOptionsProps) {

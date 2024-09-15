@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Stack } from '../stack'
+import { Stack } from '../../../../components/stack'
 
 export interface MenuOptionProps {
   label: string

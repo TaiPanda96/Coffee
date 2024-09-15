@@ -1,6 +1,6 @@
-import { Inline } from '../inline'
-import { Stack } from '../stack'
-import { TextInput } from '../text-input'
+import { Inline } from '../../../../components/inline'
+import { Stack } from '../../../../components/stack'
+import { TextInput } from '../../../../components/text-input'
 import { FilterOptionProps } from './filter-options'
 
 export interface SliderOptionsProps extends FilterOptionProps {

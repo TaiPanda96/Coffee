@@ -1,6 +1,6 @@
 'use server'
 
-import { FilterOptions } from '@coffee-app/components/filter/container'
+import { FilterOptions } from '@coffee-app/app/home/components/filter/container'
 import { Coffee } from '@coffee-app/gen/prisma'
 import { filterCategories } from '@coffee-app/lib/constants/filter-categories'
 import { createContext } from '@coffee-app/lib/create-context'

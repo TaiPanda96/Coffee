@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import { Inline } from '../inline'
-import { Item } from '../item'
-import { Stack } from '../stack'
-import { CoffeeDataOutput } from '../../app/home/components/get-coffee-action'
+import { Inline } from '../../../../components/inline'
+import { Item } from '../../../../components/item'
+import { Stack } from '../../../../components/stack'
+import { CoffeeDataOutput } from '../get-coffee-action'
 
 export function Rows({
   coffeesOnShelf,

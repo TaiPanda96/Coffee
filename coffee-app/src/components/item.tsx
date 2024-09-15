@@ -4,7 +4,7 @@ import { Stack } from './stack'
 import styles from './item.module.css'
 import Link from 'next/link'
 import { HorizontalLine } from './horizontal-line'
-import { CoffeeDataOutput } from './actions/get-coffee-action'
+import { CoffeeDataOutput } from '../app/home/components/get-coffee-action'
 
 export interface ItemProps {
   key: string

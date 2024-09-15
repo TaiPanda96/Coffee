@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["next/core-web-vitals", "standard", "prettier"],
   "rules": {
     "no-redeclare": "off", // doesn't support TS overloads
     "n/no-callback-literal": "off",

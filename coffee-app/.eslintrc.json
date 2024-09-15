@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "standard", "prettier"],
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
     "no-redeclare": "off", // doesn't support TS overloads
     "n/no-callback-literal": "off",
@@ -10,21 +10,5 @@
       "error",
       { "varsIgnorePattern": "^_", "args": "none", "ignoreRestSiblings": true }
     ]
-  },
-  "overrides": [
-    {
-      "files": [
-        "**/*.test.ts",
-        "**/*.test.tsx",
-        "**/*.itest.ts",
-        "**/*.itest.tsx",
-        "**/*.utest.ts",
-        "**/*.utest.tsx",
-        "**/jest/**/*.ts"
-      ],
-      "env": {
-        "jest": true
-      }
-    }
-  ]
+  }
 }

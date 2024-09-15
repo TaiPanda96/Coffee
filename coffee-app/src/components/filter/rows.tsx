@@ -1,13 +1,13 @@
-import { Coffee } from '@/lib/constants/coffee-list'
 import { motion } from 'framer-motion'
 import { Inline } from '../inline'
 import { Item } from '../item'
 import { Stack } from '../stack'
+import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
 
 export function Rows({
   coffeesOnShelf,
 }: {
-  coffeesOnShelf: Coffee[]
+  coffeesOnShelf: CoffeeDataOutput[]
   includeShelfIndicator?: boolean
 }) {
   return (
@@ -18,15 +18,15 @@ export function Rows({
             <Stack gap={8} className="flex-wrap">
               {coffeesOnShelf.map((coffee) => (
                 <motion.div
-                  key={`coffee-${coffee.slug}`}
+                  key={`${coffee.slug}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Item
                     key={coffee.slug}
                     className="bg-brand-1300 flex-wrap"
-                    title={coffee.title}
-                    description={coffee.description}
+                    title={coffee.name}
+                    description={coffee.roaster}
                     slug={coffee.slug}
                     coffee={coffee}
                   />

@@ -1,10 +1,10 @@
 'use client'
+
 import classNames from 'classnames'
 import { Inline } from '../inline'
 import { FilterOptions } from './filter-options'
 import { RadioOptions } from './radio-options'
 import { SliderOptions } from './slider-options'
-import { Coffee } from '@/lib/constants/coffee-list'
 import React, { useState } from 'react'
 import { Stack } from '../stack'
 import { motion } from 'framer-motion'
@@ -12,6 +12,7 @@ import { camelCase } from 'lodash'
 import { ShelfComponent } from './shelf'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
 
 export const availableFilters = {
   radio: RadioOptions,
@@ -19,40 +20,55 @@ export const availableFilters = {
   slider: SliderOptions,
 }
 
-export interface FilterContainerProps {
-  filterOptions: Array<{
-    description: string
-    title: string
-    options: string[]
-    sliderOptions?: {
-      [key: string]: string[]
-    }
-    typeOfFilter: string
-  }>
-  data: Coffee[]
+export type FilterType = 'radio' | 'list' | 'slider'
+
+export type FilterOptions = {
+  key: 'brewMethod' | 'roastLevel' | 'tasteNotes'
+  title: string
+  description?: string
+  options: string[]
+  sliderOptions?: {
+    [key: string]: string[]
+  }
+  typeOfFilter: FilterType
 }
 
-export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
+export interface FilterContainerProps {
+  data: CoffeeDataOutput[]
+  filters: FilterOptions[]
+}
+
+export async function FilterContainer({ data, filters }: FilterContainerProps) {
   const [coffeeData, setCoffeeData] = useState(data)
 
-  const groupItemsInShelves = (items: any[], numberOfShelves: number) => {
-    return items.reduce((coffeeShelfArray, item, idx) => {
-      const shelfIdx = Math.floor(idx / numberOfShelves)
-      if (!coffeeShelfArray[shelfIdx]) {
-        coffeeShelfArray[shelfIdx] = []
-      }
-      coffeeShelfArray[shelfIdx].push(item)
-      return coffeeShelfArray
-    }, [])
+  const groupItemsInShelves = (items: any[], numberOfShelves: number): CoffeeDataOutput[][] => {
+    return items.reduce(
+      (
+        coffeeShelfArray: {
+          [x: string]: CoffeeDataOutput[]
+        },
+        item,
+        idx,
+      ) => {
+        const shelfIdx = Math.floor(idx / numberOfShelves)
+        if (!coffeeShelfArray[shelfIdx]) {
+          coffeeShelfArray[shelfIdx] = []
+        }
+        coffeeShelfArray[shelfIdx].push(item)
+        return coffeeShelfArray
+      },
+      [],
+    )
   }
 
   const applyFilter = (event: { target: { value: string } }, filterTitle: string) => {
-    const filterOption = event.target.value
+    const filterOption = event.target.value as string
 
     const filteredData = data.filter((coffee) => {
       if (event.target.value === 'All') return true
-      const filterOn = coffee[`${camelCase(filterTitle)}` as keyof Coffee] ?? coffee.brewMethod
-      return filterOn === filterOption
+      const key = camelCase(filterTitle) as keyof CoffeeDataOutput
+      const filterOn = coffee[key]
+      return filterOn === filterOption ?? 'brewMethod'
     })
 
     setCoffeeData(filteredData)
@@ -72,7 +88,7 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
             'font-semibold',
           )}
         >
-          {filterOptions.map((filter, idx) => (
+          {filters.map((filter, idx) => (
             <Inline key={idx} justify="left">
               <React.Fragment key={idx}>
                 {filter.typeOfFilter === 'radio' && (
@@ -85,7 +101,7 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
                     onChange={(event) => applyFilter(event, filter.title)}
                   />
                 )}
-                {idx < filterOptions.length - 1 && (
+                {idx < filters.length - 1 && (
                   <div
                     className="mr-4 mt-2 mb-2 bg-brand-900"
                     style={{
@@ -97,7 +113,7 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
                   />
                 )}
 
-                {idx === filterOptions.length - 1 && (
+                {idx === filters.length - 1 && (
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -134,11 +150,13 @@ export function FilterContainer({ filterOptions, data }: FilterContainerProps) {
       </Inline>
 
       <Inline className="mt-6" justify="center">
-        {coffeeShelves.map((coffeesOnShelf: Coffee[], idx: React.Key | null | undefined) => (
-          <React.Fragment key={idx}>
-            <ShelfComponent coffeesOnShelf={coffeesOnShelf} />
-          </React.Fragment>
-        ))}
+        {coffeeShelves.map(
+          (coffeesOnShelf: CoffeeDataOutput[], idx: React.Key | null | undefined) => (
+            <React.Fragment key={idx}>
+              <ShelfComponent coffeesOnShelf={coffeesOnShelf} />
+            </React.Fragment>
+          ),
+        )}
       </Inline>
     </Stack>
   )

@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "github.copilot-chat",
+    "github.copilot",
+    "mtxr.sqltools-driver-pg",
+    "mtxr.sqltools",
+    "nrwl.angular-console",
+    "prisma.prisma",
+    "streetsidesoftware.code-spell-checker",
+    "tobermory.es6-string-html",
+    "stkb.rewrap"
+  ]
+}

@@ -1,0 +1,25 @@
+
+model Coffee {
+  id                  String     @id @default(uuid())
+  name                String     @map("name")
+  roaster             String     @map("roaster")
+  quantity            Int        @map("quantity")
+  quantityDescription String?    @map("quantity_description")
+  price               Decimal    @map("price")
+  rating              Decimal    @map("rating")
+  currencyCode        String     @map("currency_code")
+  reviews             Decimal?   @map("reviews")
+  img                 String     @map("img")
+  productUrl          String     @map("product_url")
+  sourceUrl           String     @map("source_url")
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @map("updated_at") @updatedAt
+  brewMethod          String?    @map("brew_method")
+  tasteNotes          String?    @map("taste_notes")
+  process             String?    @map("process")
+  region              String?    @map("region")
+  roastLevel          String?    @map("roast_level")
+
+  @@unique([name, roaster, productUrl], name: "uix_name_roaster_product_url")
+  @@map("coffee")
+}

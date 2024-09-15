@@ -1,9 +1,12 @@
-import { FilterContainer } from '@/components/filter/container'
-import { coffeeList } from '../../lib/constants/coffee-list'
-import { filterCategories } from '@/lib/constants/filter-categories'
-import { Stack } from '@/components/stack'
-import { TextInput } from '@/components/text-input'
-import { Inline } from '@/components/inline'
+import { Inline } from '../../components/inline'
+import { Stack } from '../../components/stack'
+import { TextInput } from '../../components/text-input'
+import { Suspense } from 'react'
+import { CoffeeSection } from './coffee-section'
+
+function LoadingFallback() {
+  return <div>Loading Coffee Selections...</div>
+}
 
 export default function HomePage() {
   return (
@@ -24,7 +27,10 @@ export default function HomePage() {
           nowrap
         />
       </Inline>
-      <FilterContainer filterOptions={filterCategories} data={coffeeList} />
+
+      <Suspense fallback={<LoadingFallback />}>
+        <CoffeeSection />
+      </Suspense>
     </div>
   )
 }

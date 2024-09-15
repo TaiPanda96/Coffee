@@ -2,9 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 import { Stack } from './stack'
 import styles from './item.module.css'
-import { Coffee } from '@/lib/constants/coffee-list'
 import Link from 'next/link'
 import { HorizontalLine } from './horizontal-line'
+import { Coffee } from '../lib/constants/coffee-list'
+import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
 
 export interface ItemProps {
   key: string
@@ -13,7 +14,7 @@ export interface ItemProps {
   description?: string
   price?: string
   count?: string
-  coffee?: Coffee
+  coffee?: CoffeeDataOutput
   slug: string
 }
 
@@ -23,12 +24,12 @@ export function Item({ slug, coffee }: ItemProps) {
       <Stack gap={0.5}>
         <Link href={`/product/${slug}`}>
           <img
-            src={coffee?.image}
+            src={coffee?.img}
             width={200}
             height={200}
-            className={classNames(styles.itemHover)}
+            className={classNames(styles.itemHover, 'bg-transparent')}
           />
-          <HorizontalLine thickness={14} color="#e2af51" />
+          <HorizontalLine thickness={14} color="#e4b762" />
         </Link>
       </Stack>
     </div>

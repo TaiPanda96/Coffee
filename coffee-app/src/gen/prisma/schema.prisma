@@ -1,0 +1,42 @@
+model Coffee {
+  id                  String   @id @default(uuid())
+  name                String   @map("name")
+  roaster             String   @map("roaster")
+  quantity            Int      @map("quantity")
+  quantityDescription String?  @map("quantity_description")
+  price               Decimal  @map("price")
+  rating              Decimal  @map("rating")
+  currencyCode        String   @map("currency_code")
+  reviews             Decimal? @map("reviews")
+  img                 String   @map("img")
+  productUrl          String   @map("product_url")
+  sourceUrl           String   @map("source_url")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt @map("updated_at")
+  brewMethod          String?  @map("brew_method")
+  tasteNotes          String?  @map("taste_notes")
+  process             String?  @map("process")
+  region              String?  @map("region")
+  roastLevel          String?  @map("roast_level")
+
+  @@unique([name, roaster, productUrl], name: "uix_name_roaster_product_url")
+  @@map("coffee")
+}
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../../src/gen/prisma"
+  previewFeatures = ["metrics", "prismaSchemaFolder", "omitApi", "views", "driverAdapters"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}

@@ -1,73 +1,53 @@
 {
-    "folders": [
-      {
-        "path": "src/lib",
-        "name": "Lib"
-      },
-      {
-        "path": "src/app",
-        "name": "Application"
-      },
-      {
-        "path": "src/components",
-        "name": "Component"
-      },
-    ],
-    "settings": {
-      "files.exclude": {
-        "node_modules/": true,
-        "apps": true
-      },
-      "cSpell.words": [
-        "bignumber",
-        "capchase",
-        "Capchase",
-        "chargeoff",
-        "chargeoffs",
-        "chrono",
-        "datetime",
-        "Dinero",
-        "helicone",
-        "hubspot",
-        "highfi",
-        "idempotency",
-        "itest",
-        "langchain",
-        "llms",
-        "NEXTAUTH",
-        "oauth",
-        "oauths",
-        "opanai",
-        "OPENAI",
-        "openapi",
-        "optimus",
-        "Obligors",
-        "originations",
-        "outro",
-        "Pageview",
-        "payee",
-        "payer",
-        "pdfs",
-        "pulumi",
-        "Pulumi",
-        "slackify",
-        "Stringifier",
-        "superjson",
-        "trpc",
-        "txns",
-        "typecheck",
-        "unreplied",
-        "upsert",
-        "Upserted",
-        "utest",
-        "vectorstores",
-        "wayflyer",
-        "webworkers",
-        "workerpool",
-        "Zod's"
-      ],
-      "editor.formatOnSave": true,
-      "typescript.preferences.importModuleSpecifier": "non-relative",
-      "typescript.tsdk": "Prime/node_modules/typescript/lib"
+  "folders": [
+    {
+      "path": "Coffee/coffee-app",
+      "name": "Application"
+    },
+    {
+      "path": "coffee-app/prisma",
+      "name": "Prisma"
+    },
+    {
+      "path": "coffee-app/src",
+      "name": "Source"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules/": true,
+      "apps": true
+    },
+    "cSpell.words": [],
+    "editor.formatOnSave": true,
+    "editor.rulers": [100],
+    "editor.wordWrapColumn": 100,
+    "rewrap.autoWrap.enabled": true,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.preferences.autoImportFileExcludePatterns": ["@prisma/client", "vm"],
+    "eslint.useFlatConfig": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "breadcrumbs.enabled": true,
+    "editor.hover.enabled": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.suggestOnTriggerCharacters": false,
+    "sqltools.format": {
+      "linesBetweenQueries": 2,
+      "reservedWordCase": "upper",
+      "language": "sql"
+    },
+    "[sql]": {
+      "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
   }
+}

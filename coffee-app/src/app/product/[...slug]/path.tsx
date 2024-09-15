@@ -1,4 +1,4 @@
-import { HomePath, getHomePath } from '@/app/path'
+import { HomePath } from '../../path'
 
 export interface ProductProfilePathParams extends HomePath {
   params: {

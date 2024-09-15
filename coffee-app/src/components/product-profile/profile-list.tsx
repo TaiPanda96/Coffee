@@ -1,12 +1,12 @@
 'use client'
 import { MutableRefObject, useEffect, useRef, useState } from 'react'
 import styles from './profile-list.module.css'
-import { Coffee } from '@/lib/constants/coffee-list'
 import { Stack } from '../stack'
 import classNames from 'classnames'
-import { getProductProfilePath } from '@/app/product/[...slug]/path'
 import { Inline } from '../inline'
 import { ProductDetail } from './carousel'
+import { Coffee } from '../../lib/constants/coffee-list'
+import { getProductProfilePath } from '../../app/product/[...slug]/path'
 
 export interface PressMenuProps {
   params: {

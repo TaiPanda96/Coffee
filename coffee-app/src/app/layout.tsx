@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import CustomCursor from '@/components/cursor'
 import classNames from 'classnames'
+import CustomCursor from '@coffee-app/components/cursor'
 
 export const metadata: Metadata = {
   title: 'Your Next Cup',

@@ -1,8 +1,8 @@
-import { Coffee } from '@/lib/constants/coffee-list'
+import { CoffeeDataOutput } from '@coffee-app/app/home/actions/get-coffee-action'
 import { Stack } from '../stack'
 import { Rows } from './rows'
 
-export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: Coffee[] }) {
+export function ShelfComponent({ coffeesOnShelf }: { coffeesOnShelf: CoffeeDataOutput[] }) {
   return (
     <Stack gap={6}>
       <Rows coffeesOnShelf={coffeesOnShelf} />
